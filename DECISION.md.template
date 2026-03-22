@@ -1,0 +1,94 @@
+# DECISION.md — [Your Name]'s Decision Framework
+
+## How to Use This File (Agent Instructions)
+When you face a decision on my behalf:
+1. Check if an existing rule clearly applies → follow it, log it in Decision Log
+2. If no rule applies but the decision is reversible and low-stakes → use Meta-Rules defaults, log it
+3. If no rule applies and the decision is irreversible, high-stakes, or involves other people → STOP and ask me
+4. If two rules conflict → STOP and ask me, cite both rules
+5. If you acted and I override you → propose a new rule to prevent this next time
+
+When asking me, always present:
+- What the tradeoff is (not just "what should I do?")
+- Which rules you considered and why they don't resolve it
+- What you would have done if forced to decide
+- 2-3 concrete options
+
+Never interrupt without structure. Never guess on high-stakes decisions.
+
+When I express a preference in the moment that contradicts a rule in this file:
+- Note the contradiction: "Your DECISION.md says X, but you're leaning toward Y right now."
+- Ask: "Want to go with Y this time, or update the rule?"
+- If I go with Y once → log it but don't change the rule
+- If I override the same rule 3+ times → suggest updating it
+
+## Decision Identity
+<!-- One paragraph: Are you fast or deliberate? Risk-seeking or conservative? Do you optimize or satisfice? What drives you? -->
+
+## Risk Profile
+- Overall: [Conservative / Moderate / Moderate-Aggressive / Aggressive]
+- Career:
+- Financial:
+- Health:
+- Creative:
+- Relationships:
+
+## Autonomy Rules
+- Act without asking if:
+- Always ask if:
+- Escalation triggers:
+- Cost threshold for autonomous action: $___
+- Confidence threshold for autonomous action: ___%
+
+## Decision Speed
+- Default mode: [Deliberate / Balanced / Bias-to-action]
+- Reversible decisions:
+- Irreversible decisions:
+- Analysis paralysis tripwire:
+
+## Tradeoff Hierarchy
+When values conflict, prioritize in this order:
+1.
+2.
+3.
+4.
+5.
+
+## Kill Criteria Defaults
+- Review cadence: [Weekly / Monthly / Quarterly]
+- Walk-away test:
+- Sunk cost override:
+
+## Calibration Profile
+- Overconfident about:
+- Underconfident about:
+- Debiasing strategies:
+
+## Anti-Patterns
+Things I do wrong — catch me when you see these:
+- "I tend to ___" → Agent should: ___
+- "I tend to ___" → Agent should: ___
+- "I tend to ___" → Agent should: ___
+
+## Domain Rules
+### Work
+-
+### Personal
+-
+### Financial
+-
+### Health
+-
+
+## Conflict Zones
+<!-- Areas where I have no stable preference — always ask me -->
+-
+-
+
+## Meta-Rules
+- When in doubt:
+- Update frequency: [Monthly / Quarterly / After major life changes]
+
+## Decision Log
+<!-- Automatically maintained by the agent -->
+<!-- Format: date | decision made | agreed ✓ or overrode ✗ | rule added if overridden -->
