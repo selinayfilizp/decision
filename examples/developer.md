@@ -1,5 +1,10 @@
 # DECISION.md — Alex's Developer Decision Framework
 
+## Meta
+- Format version: 0.2.0
+- Last updated: 2026-03-21
+- Source: Example
+
 ## How to Use This File (Agent Instructions)
 When you face a decision on my behalf:
 1. Check if an existing rule clearly applies → follow it, log it
@@ -91,7 +96,7 @@ When values conflict, prioritize in this order:
 6. Performance (fast enough > perfectly optimized)
 7. Code elegance (nice to have, not a priority)
 
-## Kill Criteria
+## Kill Criteria Defaults
 - Review cadence: Every sprint retro, briefly — "did my agent make any bad calls this sprint?"
 - Walk-away test for features: "If I delete this feature, will anyone email us?"
 - Walk-away test for refactors: "Will this refactor actually make the next 3 features easier to build?"

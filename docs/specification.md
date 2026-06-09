@@ -5,6 +5,8 @@ Version: 0.2.0
 ## Overview
 DECISION.md is a portable, human-readable markdown file that codifies a person or organization's decision-making philosophy for use by AI agents. It is designed as a living document — seeded through structured elicitation and refined continuously through real-world decision gaps.
 
+This repository treats the Markdown file as the canonical human-readable artifact. Tools that need deterministic validation should parse the same information into the structured profile described in [schemas/decision.schema.json](../schemas/decision.schema.json).
+
 ## Measuring Alignment
 
 The core success metric for a DECISION.md is **alignment rate**: the percentage of autonomous agent decisions that the user would have made themselves, measured by whether the user agrees or overrides the agent's choice.
@@ -17,6 +19,14 @@ The core success metric for a DECISION.md is **alignment rate**: the percentage 
 A mature DECISION.md should increase agreements and reduce both overrides and unnecessary interruptions. The Decision Log section tracks these events over time.
 
 ## Required Sections
+
+### Meta
+Metadata for reproducibility and update hygiene. Generated files should include:
+- Format version
+- Last updated date
+- Source or generator
+- Model name and generation settings, if an LLM was used
+- Seed question set version, if structured elicitation was used
 
 ### Decision Identity
 A single paragraph summarizing the person's decision-making style. Should capture their overall orientation: bias-to-action vs. deliberate, risk-seeking vs. risk-averse, optimizer vs. satisficer.
@@ -64,7 +74,13 @@ Fallback heuristics when no specific rule applies. Must include:
 
 ---
 
-## Recommended Section: Decision Log
+## Recommended Sections
+
+### Conflict Zones
+
+Areas where the user has no stable preference or where multiple values reliably conflict. Agents should ask before acting in these zones unless a more specific rule resolves the situation.
+
+### Decision Log
 
 A running log of decisions the agent made using this profile and whether the user agreed. This section grows over time and informs calibration updates.
 
@@ -82,7 +98,7 @@ A running log of decisions the agent made using this profile and whether the use
 
 ### The Problem It Solves
 
-No DECISION.md can anticipate every decision an agent will face. A profile built from 30 elicitation questions covers the major dimensions, but real life generates edge cases constantly: the cucumbers aren't fresh — buy them anyway? A meeting got canceled — use the free hour for deep work or clear the email backlog? A vendor is 10% over budget but significantly better — approve the overage?
+No DECISION.md can anticipate every decision an agent will face. A profile built from 35 elicitation questions covers the major dimensions and cross-dimension tradeoffs, but real life generates edge cases constantly: the cucumbers aren't fresh — buy them anyway? A meeting got canceled — use the free hour for deep work or clear the email backlog? A vendor is 10% over budget but significantly better — approve the overage?
 
 When an agent hits a decision that isn't covered by the existing DECISION.md, it currently has two bad options: guess (and risk getting it wrong) or interrupt the user with no structure (and waste their time). The Decision Gap Protocol gives it a third, better option.
 
@@ -134,7 +150,7 @@ Agent: Got it. Suggested DECISION.md update:
 
 This protocol transforms DECISION.md from a static document into a feedback loop:
 
-1. **Initial elicitation** seeds the profile with 10 dimensions from 30 structured questions
+1. **Initial elicitation** seeds the profile with 10 dimensions from 35 structured questions
 2. **Real-world usage** surfaces the gaps — decisions the initial elicitation couldn't anticipate
 3. **Gap detection** turns each gap into a structured learning opportunity
 4. **Rule capture** ensures the same type of decision is never a gap again
@@ -233,7 +249,7 @@ Mitigation: the specification requires escalation triggers and "always ask" rule
 
 ### Reproducibility
 If the elicitation uses an LLM for adaptive question generation, the instrument can change as the model updates. For consistency:
-- Seed questions are fixed and versioned (currently v0.2.0, 30 questions)
+- Seed questions are fixed and versioned (currently v0.2.0, 35 questions)
 - System prompts for adaptive questioning should be versioned and logged
 - The model name and version used should be recorded in the DECISION.md metadata
 - Temperature and generation settings should be documented
@@ -242,9 +258,15 @@ If the elicitation uses an LLM for adaptive question generation, the instrument 
 ## Meta
 - Generated with: DecisionOS v0.2.0
 - Model: claude-sonnet-4-20250514 (adaptive questions only)
-- Seed questions: v0.2.0 (30 questions, 10 dimensions)
+- Seed questions: v0.2.0 (35 questions, 10 dimensions)
 - Last updated: 2026-03-21
 ```
+
+### Machine-Readable Schema
+
+The JSON schema in [schemas/decision.schema.json](../schemas/decision.schema.json) defines a structured representation of the same profile. It is intended for import/export pipelines, validators, and agent frameworks that want stable field names instead of parsing Markdown headings directly.
+
+The schema does not replace the Markdown standard. A valid implementation may store only Markdown, only structured JSON, or both, as long as the fields map cleanly to the sections in this specification.
 
 ---
 

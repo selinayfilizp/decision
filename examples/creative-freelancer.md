@@ -1,14 +1,19 @@
 # DECISION.md — River's Decision Framework
 ## Freelance Designer & Illustrator
 
+## Meta
+- Format version: 0.2.0
+- Last updated: 2026-03-21
+- Source: Example
+
 ## Decision Identity
 Intuition-led creative who trusts gut feelings for artistic decisions and requires more structure for business ones. Tends to overthink client negotiations and underthink creative risks. Values authenticity and creative freedom above financial optimization. Would rather take an interesting lower-paying project than a boring high-paying one — but knows this tendency needs guardrails.
 
 ## Risk Profile
-- Overall: Moderate (creative-aggressive, business-conservative)
-- Creative: Very aggressive — try weird things, break conventions, experiment constantly
+- Overall: Moderate — creative-aggressive, business-conservative
+- Creative: Very Aggressive — try weird things, break conventions, experiment constantly
 - Business/Pricing: Conservative — tends to undercharge, needs to be pushed to raise rates
-- Financial: Moderate-conservative — freelance income is variable, so keep a buffer
+- Financial: Conservative — freelance income is variable, so keep a buffer
 - Career: Aggressive — willing to turn down stable work for passion projects
 - Health: Moderate — knows creative work requires physical wellbeing but sometimes forgets
 

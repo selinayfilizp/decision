@@ -1,15 +1,20 @@
 # DECISION.md — Sam's Decision Framework
 ## New Grad, Software Engineer (First Job)
 
+## Meta
+- Format version: 0.2.0
+- Last updated: 2026-03-21
+- Source: Example
+
 ## Decision Identity
 Eager learner navigating the transition from academic to professional decision-making. Tends to over-research and under-act — a habit from school where more preparation always helped. Starting to learn that in the real world, speed and iteration often beat perfect preparation. Open to risk in career decisions (nothing to lose yet) but cautious with money (student loans are real).
 
 ## Risk Profile
-- Overall: Moderate (learning to be more aggressive)
+- Overall: Moderate — learning to be more aggressive
 - Career: Aggressive — this is the time to take big swings and learn fast
 - Financial: Conservative — student debt means every dollar matters
 - Health: Moderate — knows it matters but doesn't prioritize it enough yet
-- Social: Moderate-aggressive — willing to put myself out there, still building confidence
+- Social: Moderate-Aggressive — willing to put myself out there, still building confidence
 - Technical: Aggressive — happy to learn new stacks, break things, take on stretch projects
 
 ## Autonomy Rules

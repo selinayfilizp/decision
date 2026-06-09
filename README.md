@@ -58,12 +58,27 @@ Read the full analysis: [docs/soul-document-positioning.md](docs/soul-document-p
 
 A portable, human-readable markdown file that codifies your personal decision-making philosophy. It teaches your AI agent how *you* think — your risk tolerance, your tradeoff priorities, when to act autonomously vs. when to ask, what biases to watch out for, and how to handle decisions across different domains.
 
+This repository defines the open DECISION.md format: the template, examples, elicitation questions, validation guidance, and integration notes. DecisionOS is one implementation of that format.
+
 The most important section is the one most people wouldn't think to write: **Anti-Patterns** — documenting the things you do *wrong*. Your agent doesn't need to know your strengths. It needs to catch your weaknesses: the anchoring, the sunk cost reasoning, the overcommitting, the anxiety-driven over-research. Document your bugs, not just your features.
+
+## Quick Start
+
+1. Copy [DECISION.md.template](DECISION.md.template) into your agent or project as `DECISION.md`.
+2. Fill in concrete thresholds for cost, confidence, reversibility, escalation, and update cadence.
+3. Paste or upload the file into your AI tool, or place it beside your agent configuration.
+4. Stress-test it with three real decisions: one low-stakes, one high-stakes, and one where two rules conflict.
+5. When the agent gets a decision wrong, add the new rule to the most relevant section and log the override.
 
 ### Example DECISION.md
 
 ```markdown
 # DECISION.md — Sarah's Decision Framework
+
+## Meta
+- Format version: 0.2.0
+- Last updated: 2026-03-21
+- Source: Manual
 
 ## Decision Identity
 Bias-to-action generalist who values learning over optimization.
@@ -76,7 +91,7 @@ make a fast reversible mistake than deliberate endlessly.
 - Career: Aggressive — willing to take asymmetric bets
 - Financial: Conservative — never risk >5% on a single position
 - Health: Ultra-conservative — always consult a professional
-- Creative: Risk-seeking — try weird things, fail fast
+- Creative: Aggressive — try weird things, fail fast
 
 ## Autonomy Rules
 - Act without asking if: cost < $50, reversible, low stakes
@@ -97,7 +112,7 @@ When values conflict, prioritize in this order:
 4. Financial optimization
 5. Social harmony
 
-## Kill Criteria
+## Kill Criteria Defaults
 - Review cadence: Monthly
 - Default walk-away test: "Would I start this today, knowing what I know now?"
 - Sunk cost override: Always active — past investment is irrelevant
@@ -192,7 +207,7 @@ Full protocol specification: [docs/specification.md](docs/specification.md)
 
 ### Option 1: Interactive Experience (Recommended)
 
-Visit **[decisionos.app](https://decisionos.app)** — 30 research-backed tradeoff scenarios across 10 decision dimensions. No account, no API key, nothing to install.
+Visit **[decisionos.app](https://decisionos.app)** — 35 research-backed tradeoff scenarios across 10 decision dimensions: 30 core questions plus 5 cross-dimension tradeoff questions. No account, no API key, nothing to install.
 
 What makes the interactive experience different from just chatting with an LLM:
 
@@ -294,16 +309,24 @@ decision/
 │   ├── startup-founder.md       ← Example: risk-tolerant founder
 │   ├── conservative-exec.md     ← Example: careful executive
 │   ├── creative-freelancer.md   ← Example: creative professional
-│   └── new-grad.md              ← Example: early career
+│   ├── new-grad.md              ← Example: early career
+│   └── structured-profile.json  ← Example structured profile
 ├── docs/
 │   ├── research.md              ← Full research framework with citations
 │   ├── soul-document-positioning.md  ← Why DECISION.md completes the stack
 │   ├── specification.md         ← The DECISION.md format specification
-│   └── integration-guide.md     ← How to use with different platforms
-└── elicitation/
-    ├── seed-questions.md        ← 30 questions across 10 dimensions
-    ├── system-prompts/          ← Claude API prompts for adaptive questioning
-    └── dimensions.md            ← The 10 decision dimensions we elicit
+│   ├── integration-guide.md     ← How to use with different platforms
+│   └── validation.md            ← Validation guidance for implementers
+├── elicitation/
+│   ├── seed-questions.md        ← 35 questions across 10 dimensions
+│   ├── system-prompts/          ← Claude API prompts for adaptive questioning
+│   └── dimensions.md            ← The 10 decision dimensions we elicit
+├── schemas/
+│   └── decision.schema.json      ← Machine-readable structured profile schema
+├── scripts/
+│   └── validate-structured-profile.mjs  ← Dependency-free structured profile validator
+├── CONTRIBUTING.md              ← How to contribute examples, docs, and integrations
+└── CHANGELOG.md                 ← Version history
 ```
 
 ---
@@ -350,7 +373,7 @@ We're building an open standard. Contributions welcome:
 Yes. SOUL.md defines personality — voice, tone, expertise, boundaries. DECISION.md defines judgment — how to choose when facing tradeoffs, uncertainty, and competing priorities. They're complementary, not competing.
 
 **How many questions do I need to answer?**
-The interactive experience has 30 curated questions covering 10 dimensions. You can stop and download at any point — even after 3 questions, you'll have a useful DECISION.md. It's a living document that gets more precise the more you refine it.
+The interactive experience has 35 curated questions: 30 core questions covering 10 dimensions, plus 5 cross-dimension tradeoff questions. You can stop and download at any point — even after 3 questions, you'll have a useful DECISION.md. It's a living document that gets more precise the more you refine it.
 
 **Does it work with models other than Claude?**
 Yes. DECISION.md is plain markdown. It works with any LLM that can read a system prompt: Claude, GPT, Gemini, Llama, Mistral, or any agent framework.
@@ -360,6 +383,9 @@ Quarterly, or after major life changes (new job, new relationship, big move). Yo
 
 **Is my data private?**
 The core experience runs entirely in your browser with no backend. Your responses are stored locally on your device and your DECISION.md is generated client-side. If you optionally connect a Claude API key for adaptive questioning, your responses are sent to Anthropic's API under their standard privacy policy — but never to our servers.
+
+**Should I commit my personal DECISION.md to a public repo?**
+Usually no. A DECISION.md can reveal sensitive information about your risk tolerance, finances, relationships, health boundaries, and professional preferences. Share anonymized examples when contributing publicly, and keep personal or organization-specific files private unless you deliberately want them public.
 
 ---
 

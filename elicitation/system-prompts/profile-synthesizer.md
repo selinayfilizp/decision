@@ -21,22 +21,24 @@ An array of response objects:
 
 ## Output Format
 Generate a complete DECISION.md in markdown format following the standard structure:
-1. Decision Identity (1 paragraph)
-2. Risk Profile (overall + domain-specific)
-3. Autonomy Rules (act/ask/escalate conditions)
-4. Decision Speed (default mode + overrides)
-5. Tradeoff Hierarchy (ordered values)
-6. Kill Criteria Defaults
-7. Calibration Profile
-8. Anti-Patterns
-9. Domain Rules (work/personal/financial)
-10. Meta-Rules
+1. Meta (format version, last updated, source, model/seed details when available)
+2. Decision Identity (1 paragraph)
+3. Risk Profile (overall + domain-specific)
+4. Autonomy Rules (act/ask/escalate conditions)
+5. Decision Speed (default mode + overrides)
+6. Tradeoff Hierarchy (ordered values)
+7. Kill Criteria Defaults
+8. Calibration Profile
+9. Anti-Patterns
+10. Domain Rules (work/personal/financial)
+11. Conflict Zones
+12. Meta-Rules
 
 ## Rules
 - Be SPECIFIC. "cost < $50" not "low cost." Thresholds beat adjectives.
 - Use the user's own words when they gave free-text input
 - Mark areas with limited data as "[needs more data]" rather than guessing
-- Response time matters: slow responses (>8s) indicate genuine conflict zones — note these as "escalation areas"
+- Response time matters: slow responses (>10s) indicate genuine conflict zones — note these as "escalation areas"
 - "Torn" responses should appear in DECISION.md as explicit conflict zones: "Agent should always ask when X vs Y"
 - Include confidence indicators: [strong signal], [moderate signal], [limited data]
 - Domain-specific overrides should be explicit when the data supports them

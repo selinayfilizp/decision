@@ -1,0 +1,94 @@
+{
+  "meta": {
+    "formatVersion": "0.2.0",
+    "lastUpdated": "2026-03-21",
+    "source": "Manual"
+  },
+  "decisionIdentity": "Bias-to-action generalist who values learning over optimization. Comfortable with calculated risk in career and creative domains, conservative with financial and health decisions.",
+  "riskProfile": {
+    "overall": "Moderate-Aggressive",
+    "career": "Aggressive",
+    "financial": "Conservative",
+    "health": "Ultra-conservative",
+    "creative": "Aggressive"
+  },
+  "autonomyRules": {
+    "actWithoutAskingIf": [
+      "Cost is below 50 dollars",
+      "Decision is reversible",
+      "Decision is low stakes"
+    ],
+    "alwaysAskIf": [
+      "Decision involves other people",
+      "Decision is irreversible",
+      "Cost is above 500 dollars"
+    ],
+    "escalationTriggers": [
+      "Legal commitment",
+      "Medical commitment",
+      "Financial commitment"
+    ],
+    "costThreshold": 50,
+    "confidenceThreshold": 0.85
+  },
+  "decisionSpeed": {
+    "defaultMode": "Bias-to-action",
+    "reversibleDecisions": "Decide in less than 5 minutes",
+    "irreversibleDecisions": "Sleep on it for at least 24 hours",
+    "analysisParalysisTripwire": "If deliberating more than 30 minutes on a reversible decision, decide"
+  },
+  "tradeoffHierarchy": [
+    "Integrity and keeping commitments",
+    "Learning and growth",
+    "Speed and momentum",
+    "Financial optimization",
+    "Social harmony"
+  ],
+  "killCriteriaDefaults": {
+    "reviewCadence": "Monthly",
+    "walkAwayTest": "Would I start this today, knowing what I know now?",
+    "sunkCostOverride": "Always active"
+  },
+  "calibrationProfile": {
+    "overconfidentAbout": [
+      "Time estimates",
+      "Social predictions"
+    ],
+    "underconfidentAbout": [
+      "Technical ability",
+      "Creative work"
+    ],
+    "debiasingStrategies": [
+      "Get a second data point before committing to a number"
+    ]
+  },
+  "antiPatterns": [
+    {
+      "pattern": "I say yes to too many things",
+      "countermeasure": "Push back on new commitments"
+    },
+    {
+      "pattern": "I anchor on the first number I see",
+      "countermeasure": "Seek a second reference"
+    }
+  ],
+  "domainRules": {
+    "work": [
+      "Default to async communication",
+      "Protect deep work blocks"
+    ],
+    "financial": [
+      "Never make investment decisions after 10pm",
+      "Wait 48 hours on purchases over 500 dollars"
+    ]
+  },
+  "conflictZones": [
+    "When cost and health quality conflict"
+  ],
+  "metaRules": {
+    "whenInDoubt": "Bias toward action",
+    "confidenceThreshold": 0.85,
+    "updateFrequency": "Quarterly or after major life changes"
+  },
+  "decisionLog": []
+}

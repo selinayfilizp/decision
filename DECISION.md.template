@@ -1,5 +1,13 @@
 # DECISION.md — [Your Name]'s Decision Framework
 
+## Meta
+- Format version: 0.2.0
+- Last updated: YYYY-MM-DD
+- Source: [Manual / DecisionOS / Other]
+- Generated with: [Tool name and version, if applicable]
+- Model: [Model name, if adaptive generation was used]
+- Seed questions: [Question set version, if applicable]
+
 ## How to Use This File (Agent Instructions)
 When you face a decision on my behalf:
 1. Check if an existing rule clearly applies → follow it, log it in Decision Log
@@ -23,10 +31,10 @@ When I express a preference in the moment that contradicts a rule in this file:
 - If I override the same rule 3+ times → suggest updating it
 
 ## Decision Identity
-<!-- One paragraph: Are you fast or deliberate? Risk-seeking or conservative? Do you optimize or satisfice? What drives you? -->
+<!-- One paragraph: Are you fast or deliberate? Risk-tolerant or conservative? Do you optimize or satisfice? What drives you? -->
 
 ## Risk Profile
-- Overall: [Conservative / Moderate / Moderate-Aggressive / Aggressive]
+- Overall: [Ultra-conservative / Conservative / Moderate / Moderate-Aggressive / Aggressive / Very Aggressive]
 - Career:
 - Financial:
 - Health:
@@ -87,6 +95,7 @@ Things I do wrong — catch me when you see these:
 
 ## Meta-Rules
 - When in doubt:
+- Confidence threshold for autonomous action: ___%
 - Update frequency: [Monthly / Quarterly / After major life changes]
 
 ## Decision Log

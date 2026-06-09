@@ -1,13 +1,18 @@
 # DECISION.md — Jordan's Decision Framework
 ## VP Operations, Fortune 500
 
+## Meta
+- Format version: 0.2.0
+- Last updated: 2026-03-21
+- Source: Example
+
 ## Decision Identity
 Measured, data-driven leader who values thoroughness and stakeholder alignment. Prefers building consensus before acting and views decisions as commitments to follow through on. Conservative by default, but capable of decisive action when data clearly supports it. Believes the best decisions are ones where everyone understands the reasoning, even if they disagree.
 
 ## Risk Profile
 - Overall: Conservative
 - Career: Moderate — will take calculated risks with clear upside, but never jeopardize reputation
-- Financial: Very conservative — index funds, diversified, no speculative positions
+- Financial: Ultra-conservative — index funds, diversified, no speculative positions
 - Health: Conservative — follows medical advice, preventive care, no shortcuts
 - Organizational: Moderate — willing to restructure if data supports it, but never hastily
 

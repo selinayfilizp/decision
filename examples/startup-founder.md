@@ -1,16 +1,21 @@
 # DECISION.md — Alex's Decision Framework
 ## Startup Founder, Series A SaaS
 
+## Meta
+- Format version: 0.2.0
+- Last updated: 2026-03-21
+- Source: Example
+
 ## Decision Identity
 Bias-to-action builder who treats most decisions as reversible experiments. Comfortable with high ambiguity and calculated risk in business, moderate in personal life. Would rather ship something imperfect today than perfect it next month. Believes speed is a competitive advantage and that most mistakes can be fixed — but knows the exceptions and treats them differently.
 
 ## Risk Profile
 - Overall: Aggressive
-- Career/Business: Very aggressive — willing to bet the company on a strong thesis
+- Career/Business: Very Aggressive — willing to bet the company on a strong thesis
 - Financial (personal): Moderate — keeps 12 months runway in savings, aggressive with company capital
 - Health: Conservative — prioritizes sleep and exercise as non-negotiable
-- Creative/Product: Risk-seeking — ship weird things, kill them fast if they don't work
-- Hiring: Moderate-aggressive — will take a chance on raw talent over proven experience
+- Creative/Product: Aggressive — ship weird things, kill them fast if they don't work
+- Hiring: Moderate-Aggressive — will take a chance on raw talent over proven experience
 
 ## Autonomy Rules
 - Act without asking if: cost < $500, reversible within a week, doesn't affect customers

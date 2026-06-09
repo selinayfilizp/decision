@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://decisionos.app/schemas/decision.schema.json",
+  "title": "DECISION.md Structured Profile",
+  "description": "A machine-readable representation of a DECISION.md profile.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta",
+    "decisionIdentity",
+    "riskProfile",
+    "autonomyRules",
+    "decisionSpeed",
+    "tradeoffHierarchy",
+    "killCriteriaDefaults",
+    "calibrationProfile",
+    "antiPatterns",
+    "domainRules",
+    "metaRules"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["formatVersion", "lastUpdated"],
+      "properties": {
+        "formatVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date"
+        },
+        "source": {
+          "type": "string",
+          "examples": ["Manual", "DecisionOS"]
+        },
+        "generatedWith": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "seedQuestions": {
+          "type": "string"
+        }
+      }
+    },
+    "decisionIdentity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "riskProfile": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/riskLevel"
+      },
+      "required": ["overall"],
+      "properties": {
+        "overall": {
+          "$ref": "#/$defs/riskLevel"
+        }
+      }
+    },
+    "autonomyRules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actWithoutAskingIf",
+        "alwaysAskIf",
+        "escalationTriggers",
+        "confidenceThreshold"
+      ],
+      "properties": {
+        "actWithoutAskingIf": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "alwaysAskIf": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "escalationTriggers": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        },
+        "costThreshold": {
+          "type": "number",
+          "minimum": 0
+        },
+        "confidenceThreshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "decisionSpeed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["defaultMode", "reversibleDecisions", "irreversibleDecisions"],
+      "properties": {
+        "defaultMode": {
+          "enum": ["Deliberate", "Balanced", "Bias-to-action"]
+        },
+        "reversibleDecisions": {
+          "type": "string",
+          "minLength": 1
+        },
+        "irreversibleDecisions": {
+          "type": "string",
+          "minLength": 1
+        },
+        "analysisParalysisTripwire": {
+          "type": "string"
+        }
+      }
+    },
+    "tradeoffHierarchy": {
+      "$ref": "#/$defs/nonEmptyStringArray",
+      "minItems": 3
+    },
+    "killCriteriaDefaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reviewCadence", "walkAwayTest", "sunkCostOverride"],
+      "properties": {
+        "reviewCadence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "walkAwayTest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sunkCostOverride": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "calibrationProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["overconfidentAbout", "underconfidentAbout", "debiasingStrategies"],
+      "properties": {
+        "overconfidentAbout": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "underconfidentAbout": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "debiasingStrategies": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        }
+      }
+    },
+    "antiPatterns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["pattern", "countermeasure"],
+        "properties": {
+          "pattern": {
+            "type": "string",
+            "minLength": 1
+          },
+          "countermeasure": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "domainRules": {
+      "type": "object",
+      "minProperties": 2,
+      "additionalProperties": {
+        "$ref": "#/$defs/nonEmptyStringArray"
+      }
+    },
+    "conflictZones": {
+      "$ref": "#/$defs/stringArray"
+    },
+    "metaRules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["whenInDoubt", "updateFrequency"],
+      "properties": {
+        "whenInDoubt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "updateFrequency": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confidenceThreshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "decisionLog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["date", "decision", "outcome"],
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "decision": {
+            "type": "string",
+            "minLength": 1
+          },
+          "outcome": {
+            "enum": ["agreed", "overrode", "unnecessary_interruption", "under_asked"]
+          },
+          "ruleAdded": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "riskLevel": {
+      "enum": [
+        "Ultra-conservative",
+        "Conservative",
+        "Moderate",
+        "Moderate-Aggressive",
+        "Aggressive",
+        "Very Aggressive"
+      ]
+    },
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "nonEmptyStringArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}
