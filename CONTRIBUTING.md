@@ -27,6 +27,7 @@ Keep the decision logic, but anonymize the identifying context.
 - Follow [docs/specification.md](docs/specification.md) for required sections.
 - Use [DECISION.md.template](DECISION.md.template) for new examples.
 - Keep examples concrete: thresholds beat adjectives.
+- If you add Markdown examples, lint them with `node scripts/lint-decision-md.mjs <file>`.
 - If you add structured data, validate it with `node scripts/validate-structured-profile.mjs <file>` and keep it aligned with [schemas/decision.schema.json](schemas/decision.schema.json).
 - If you change the elicitation question count, update README, specification, research docs, and system prompts together.
 
@@ -35,5 +36,7 @@ Keep the decision logic, but anonymize the identifying context.
 - [ ] The README still matches the repository structure.
 - [ ] The question count is consistent everywhere.
 - [ ] New examples are anonymized.
+- [ ] Markdown examples pass `node scripts/lint-decision-md.mjs <file>`.
+- [ ] Structured JSON examples pass `node scripts/validate-structured-profile.mjs <file>`.
 - [ ] New claims are sourced or clearly framed as design rationale.
 - [ ] Structured JSON examples parse successfully.

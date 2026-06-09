@@ -70,3 +70,19 @@ node scripts/validate-structured-profile.mjs examples/structured-profile.json
 ```
 
 The script checks the required fields, risk levels, confidence thresholds, and core list lengths from the schema. It is intentionally lightweight so contributors can run it without installing dependencies.
+
+## Lint Markdown DECISION.md Files
+
+Use the Markdown linter when reviewing hand-written profiles:
+
+```bash
+node scripts/lint-decision-md.mjs examples/developer.md
+```
+
+The linter checks that the required headings are present, risk levels use the canonical vocabulary, confidence thresholds are numeric percentages, and cost thresholds include a numeric amount. It is designed for completed profiles, not the blank template.
+
+To lint all examples:
+
+```bash
+for file in examples/*.md; do node scripts/lint-decision-md.mjs "$file"; done
+```

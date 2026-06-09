@@ -71,8 +71,17 @@ Things I do wrong — catch me when you see these:
 - Set aside 30% of every payment for taxes immediately
 - Separate business and personal accounts
 
+## Conflict Zones
+Areas where I genuinely don't have a stable preference — always ask me:
+- When a creatively exciting project conflicts with minimum sustainable pricing
+- When public use of my name or portfolio could help marketing but create brand risk
+
 ## Meta-Rules
 - When in doubt (creative): Go with the bolder option
 - When in doubt (business): Sleep on it
 - Confidence threshold for autonomous action: 80% for creative, 90% for business
 - Update frequency: Quarterly, or when I notice I'm consistently unhappy with decisions
+
+## Decision Log
+<!-- Automatically maintained by the agent -->
+<!-- Format: date | decision made | agreed ✓ or overrode ✗ | rule added if overridden -->

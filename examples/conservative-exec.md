@@ -69,7 +69,16 @@ Things I do wrong — catch me when you see these:
 - Rebalance portfolio annually, not reactively
 - Emergency fund: 6 months expenses, non-negotiable
 
+## Conflict Zones
+Areas where I genuinely don't have a stable preference — always ask me:
+- When speed and stakeholder alignment conflict on decisions with visible organizational impact
+- When a reversible operational change could still create precedent across teams
+
 ## Meta-Rules
 - When in doubt: Gather one more data point, then decide
 - Confidence threshold for autonomous action: 90%
 - Update frequency: Quarterly, or after major org changes
+
+## Decision Log
+<!-- Automatically maintained by the agent -->
+<!-- Format: date | decision made | agreed ✓ or overrode ✗ | rule added if overridden -->

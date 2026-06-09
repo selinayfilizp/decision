@@ -71,7 +71,16 @@ Things I do wrong — catch me when you see these:
 - Keep 12 months personal runway at all times
 - Review burn rate weekly, not monthly
 
+## Conflict Zones
+Areas where I genuinely don't have a stable preference — always ask me:
+- When speed could improve growth but create customer trust risk
+- When a decision touches investors, board communication, or key hires
+
 ## Meta-Rules
 - When in doubt: Ship it and learn
 - Confidence threshold for autonomous action: 75%
 - Update frequency: Monthly review, major update after each board meeting or fundraise
+
+## Decision Log
+<!-- Automatically maintained by the agent -->
+<!-- Format: date | decision made | agreed ✓ or overrode ✗ | rule added if overridden -->

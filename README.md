@@ -316,15 +316,22 @@ decision/
 │   ├── soul-document-positioning.md  ← Why DECISION.md completes the stack
 │   ├── specification.md         ← The DECISION.md format specification
 │   ├── integration-guide.md     ← How to use with different platforms
+│   ├── behavior-demo.md         ← Before/after agent behavior demo
 │   └── validation.md            ← Validation guidance for implementers
 ├── elicitation/
 │   ├── seed-questions.md        ← 35 questions across 10 dimensions
 │   ├── system-prompts/          ← Claude API prompts for adaptive questioning
 │   └── dimensions.md            ← The 10 decision dimensions we elicit
+├── evals/
+│   └── behavior-cases.json      ← Minimal scenarios for before/after testing
 ├── schemas/
 │   └── decision.schema.json      ← Machine-readable structured profile schema
 ├── scripts/
+│   ├── lint-decision-md.mjs      ← Dependency-free Markdown profile linter
 │   └── validate-structured-profile.mjs  ← Dependency-free structured profile validator
+├── .github/
+│   └── ISSUE_TEMPLATE/          ← Issue templates for examples, integrations, and spec fixes
+├── CODE_OF_CONDUCT.md           ← Community participation guidelines
 ├── CONTRIBUTING.md              ← How to contribute examples, docs, and integrations
 └── CHANGELOG.md                 ← Version history
 ```

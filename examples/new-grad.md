@@ -72,7 +72,16 @@ Things I do wrong — catch me when you see these:
 - Build emergency fund to $5k before investing
 - Don't lifestyle-inflate with the first real paycheck
 
+## Conflict Zones
+Areas where I genuinely don't have a stable preference — always ask me:
+- When a stretch opportunity could accelerate learning but risks disappointing the team
+- When spending money would save time but reduce my debt payoff pace
+
 ## Meta-Rules
 - When in doubt: Ask someone with more experience, then make my own call
 - Confidence threshold for autonomous action: 70% (learning to trust myself)
 - Update frequency: Monthly for the first year, then quarterly
+
+## Decision Log
+<!-- Automatically maintained by the agent -->
+<!-- Format: date | decision made | agreed ✓ or overrode ✗ | rule added if overridden -->

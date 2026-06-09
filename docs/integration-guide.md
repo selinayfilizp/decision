@@ -80,5 +80,17 @@ Include in the agent's system_message parameter.
 
 Use [schemas/decision.schema.json](../schemas/decision.schema.json) when converting DECISION.md into a structured profile for applications, APIs, or import/export workflows. See the [validation guide](validation.md) for the field mapping and validation checklist.
 
+For Markdown profiles, run:
+
+```bash
+node scripts/lint-decision-md.mjs DECISION.md
+```
+
+For structured JSON profiles, run:
+
+```bash
+node scripts/validate-structured-profile.mjs examples/structured-profile.json
+```
+
 ## General Principle
 DECISION.md is plain markdown. Any system that accepts a system prompt or context file can use it. Just paste or upload.
