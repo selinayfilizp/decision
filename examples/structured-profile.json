@@ -62,6 +62,16 @@
       "Get a second data point before committing to a number"
     ]
   },
+  "preferenceEvidence": [
+    {
+      "rule": "Protect deep work blocks",
+      "source": "elicitation",
+      "signalStrength": "strong",
+      "rationale": "Attention and creative momentum beat short-term responsiveness",
+      "lastObserved": "2026-03-21",
+      "reviewTrigger": "Revisit if overridden three times in a month"
+    }
+  ],
   "antiPatterns": [
     {
       "pattern": "I say yes to too many things",
@@ -89,6 +99,14 @@
     "whenInDoubt": "Bias toward action",
     "confidenceThreshold": 0.85,
     "updateFrequency": "Quarterly or after major life changes"
+  },
+  "trustCalibrationRules": {
+    "preferenceConfidenceNeeded": "high",
+    "taskConfidenceNeeded": "high",
+    "stakesAllowed": "low_only",
+    "prohibitedInferences": [
+      "Never infer trustworthiness from demographic or protected attributes"
+    ]
   },
   "decisionLog": []
 }

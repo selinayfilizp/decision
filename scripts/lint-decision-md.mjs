@@ -54,6 +54,13 @@ for (const section of requiredSections) {
   }
 }
 
+const recommendedSections = [
+  "Preference Evidence",
+  "Trust Calibration Rules",
+  "Conflict Zones",
+  "Decision Log"
+];
+
 const meta = sectionBody("Meta");
 for (const field of ["Format version", "Last updated", "Source"]) {
   if (meta && !new RegExp(`^- ${escapeRegExp(field)}: .+`, "m").test(meta)) {
@@ -109,12 +116,10 @@ if (domainHeadings.length < 2) {
   errors.push("Domain Rules must include at least two domain subsections");
 }
 
-if (!hasSection("Conflict Zones")) {
-  warnings.push("Recommended section missing: ## Conflict Zones");
-}
-
-if (!hasSection("Decision Log")) {
-  warnings.push("Recommended section missing: ## Decision Log");
+for (const section of recommendedSections) {
+  if (!hasSection(section)) {
+    warnings.push(`Recommended section missing: ## ${section}`);
+  }
 }
 
 if (errors.length || warnings.length) {

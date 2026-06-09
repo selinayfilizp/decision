@@ -13,6 +13,7 @@ An array of response objects:
   "question": "...",
   "choice": "A" | "B" | "torn" | "own_take",
   "responseTimeMs": 3200,
+  "rationale": "optional — why the user chose this",
   "freeText": "optional — their own take",
   "optionA": "...",
   "optionB": "..."
@@ -29,10 +30,12 @@ Generate a complete DECISION.md in markdown format following the standard struct
 6. Tradeoff Hierarchy (ordered values)
 7. Kill Criteria Defaults
 8. Calibration Profile
-9. Anti-Patterns
-10. Domain Rules (work/personal/financial)
-11. Conflict Zones
-12. Meta-Rules
+9. Preference Evidence
+10. Anti-Patterns
+11. Domain Rules (work/personal/financial)
+12. Conflict Zones
+13. Meta-Rules
+14. Trust Calibration Rules
 
 ## Rules
 - Be SPECIFIC. "cost < $50" not "low cost." Thresholds beat adjectives.
@@ -42,3 +45,7 @@ Generate a complete DECISION.md in markdown format following the standard struct
 - "Torn" responses should appear in DECISION.md as explicit conflict zones: "Agent should always ask when X vs Y"
 - Include confidence indicators: [strong signal], [moderate signal], [limited data]
 - Domain-specific overrides should be explicit when the data supports them
+- Add Preference Evidence entries for high-impact rules, surprising choices, free-text responses, and repeated patterns
+- Preserve the user's rationale when available; do not invent a rationale when only the choice is known
+- Separate preference confidence from task confidence and stakes in Trust Calibration Rules
+- Never infer trustworthiness from demographic or protected attributes

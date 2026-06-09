@@ -47,6 +47,14 @@ When values conflict, prioritize in this order:
 - Underconfident about: My technical skills (I know more than I think), my right to have opinions in meetings
 - Debiasing: Ask "what would I advise a friend in this situation?" — I give better advice than I take
 
+## Preference Evidence
+- Rule: Ask early when blocked or unsure about company norms
+  Source: manual
+  Signal strength: strong
+  Rationale: Early questions reduce wasted work and accelerate learning
+  Last observed: 2026-03-21
+  Review trigger: Revisit after six months of professional experience
+
 ## Anti-Patterns
 Things I do wrong — catch me when you see these:
 - "I don't speak up in meetings because I think I'm too junior" → If I have a thought, share it. Being wrong is fine.
@@ -81,6 +89,12 @@ Areas where I genuinely don't have a stable preference — always ask me:
 - When in doubt: Ask someone with more experience, then make my own call
 - Confidence threshold for autonomous action: 70% (learning to trust myself)
 - Update frequency: Monthly for the first year, then quarterly
+
+## Trust Calibration Rules
+- Preference confidence needed for autonomous action: medium
+- Task confidence needed for autonomous action: high
+- Stakes level allowed for autonomous action: low only
+- Never infer trustworthiness from demographic or protected attributes.
 
 ## Decision Log
 <!-- Automatically maintained by the agent -->

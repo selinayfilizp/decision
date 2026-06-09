@@ -46,6 +46,14 @@ When values conflict, prioritize in this order:
 - Underconfident about: My own strategic instincts, ability to influence senior leadership
 - Debiasing: Always seek dissenting opinions. If everyone agrees too quickly, I'm missing something.
 
+## Preference Evidence
+- Rule: Significant decisions need written options, tradeoffs, and recommendation
+  Source: manual
+  Signal strength: strong
+  Rationale: Written reasoning improves stakeholder alignment and decision accountability
+  Last observed: 2026-03-21
+  Review trigger: Revisit if repeated urgent decisions make the written process too slow
+
 ## Anti-Patterns
 Things I do wrong — catch me when you see these:
 - "I over-consult and delay decisions" → Set a hard deadline before starting the consultation process
@@ -78,6 +86,12 @@ Areas where I genuinely don't have a stable preference — always ask me:
 - When in doubt: Gather one more data point, then decide
 - Confidence threshold for autonomous action: 90%
 - Update frequency: Quarterly, or after major org changes
+
+## Trust Calibration Rules
+- Preference confidence needed for autonomous action: high
+- Task confidence needed for autonomous action: high
+- Stakes level allowed for autonomous action: low only
+- Never infer trustworthiness from demographic or protected attributes.
 
 ## Decision Log
 <!-- Automatically maintained by the agent -->

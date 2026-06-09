@@ -111,6 +111,14 @@ When values conflict, prioritize in this order:
   - I underestimate the cost of adding dependencies. Agent should flag when a dependency adds >5MB or has <1000 weekly downloads.
   - I overestimate how much context future-me will remember. Agent should add more comments than I think are necessary.
 
+## Preference Evidence
+- Rule: Production stability beats shipping speed
+  Source: manual
+  Signal strength: strong
+  Rationale: Production mistakes create user harm and recovery work that erase short-term speed gains
+  Last observed: 2026-03-21
+  Review trigger: Revisit after a production incident review changes release policy
+
 ## Anti-Patterns
 Things I do wrong — catch me when you see these:
 - "I'll add tests later" → No. Write the failing test first, or at least write it with the fix. There is no "later."
@@ -157,6 +165,12 @@ Areas where I genuinely don't have a stable preference — always ask me:
 - Default when agents disagree: Prefer the simpler approach with tests
 - Update frequency: Monthly, or after any production incident caused by a decision rule that was wrong
 - Remember: The goal is not to write perfect code. The goal is to ship reliable software that solves real problems for users. Everything else is a means to that end.
+
+## Trust Calibration Rules
+- Preference confidence needed for autonomous action: high
+- Task confidence needed for autonomous action: high
+- Stakes level allowed for autonomous action: low only
+- Never infer trustworthiness from demographic or protected attributes.
 
 ## Decision Log
 <!-- Automatically maintained by the agent -->

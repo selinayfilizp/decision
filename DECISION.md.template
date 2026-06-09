@@ -72,6 +72,15 @@ When values conflict, prioritize in this order:
 - Underconfident about:
 - Debiasing strategies:
 
+## Preference Evidence
+<!-- Track why important rules exist, not just what the rules say. -->
+- Rule:
+  Source: [elicitation / free-text / real-world override / manual / imported history]
+  Signal strength: [strong / moderate / limited / conflicting / unknown]
+  Rationale:
+  Last observed:
+  Review trigger:
+
 ## Anti-Patterns
 Things I do wrong — catch me when you see these:
 - "I tend to ___" → Agent should: ___
@@ -97,6 +106,12 @@ Things I do wrong — catch me when you see these:
 - When in doubt:
 - Confidence threshold for autonomous action: ___%
 - Update frequency: [Monthly / Quarterly / After major life changes]
+
+## Trust Calibration Rules
+- Preference confidence needed for autonomous action: [high / medium / low]
+- Task confidence needed for autonomous action: [high / medium / low]
+- Stakes level allowed for autonomous action: [low only / low and medium / any if reversible]
+- Never infer trustworthiness from demographic or protected attributes.
 
 ## Decision Log
 <!-- Automatically maintained by the agent -->

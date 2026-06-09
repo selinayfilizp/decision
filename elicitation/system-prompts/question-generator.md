@@ -34,6 +34,8 @@ Return a JSON object:
   "question": "The scenario or question text",
   "optionA": "First option (complete sentence)",
   "optionB": "Second option (complete sentence)",
+  "rationalePrompt": "A short follow-up asking why the user chose A/B/torn",
+  "attributesTested": ["the value or attribute dimensions this question probes"],
   "insight": "What this question reveals about the user (internal note, not shown)"
 }
 ```
@@ -45,4 +47,6 @@ Return a JSON object:
 - Vary the domains (work, personal, financial, health, social)
 - After "I'm torn" responses, probe the exact boundary
 - After "My own take" responses, incorporate their framing into the next question
+- Ask for a short rationale after important or surprising choices so the profile captures why the preference exists, not only which option won
+- Do not infer durable preferences from demographic traits or protected attributes
 - Keep questions concise — no more than 3 sentences of setup

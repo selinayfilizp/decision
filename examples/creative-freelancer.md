@@ -47,6 +47,14 @@ When values conflict, prioritize in this order:
 - Underconfident about: The value of my work (consistently underprices), business acumen
 - Debiasing: Before quoting a price, look up 3 comparable rates. Never quote in the first conversation.
 
+## Preference Evidence
+- Rule: Never quote pricing in the first creative conversation
+  Source: manual
+  Signal strength: strong
+  Rationale: Separating creative fit from money protects both scope and confidence
+  Last observed: 2026-03-21
+  Review trigger: Revisit if three qualified clients reject after delayed pricing
+
 ## Anti-Patterns
 Things I do wrong — catch me when you see these:
 - "I undercharge because I feel guilty about money" → Always quote 20% higher than my first instinct
@@ -81,6 +89,12 @@ Areas where I genuinely don't have a stable preference — always ask me:
 - When in doubt (business): Sleep on it
 - Confidence threshold for autonomous action: 80% for creative, 90% for business
 - Update frequency: Quarterly, or when I notice I'm consistently unhappy with decisions
+
+## Trust Calibration Rules
+- Preference confidence needed for autonomous action: high
+- Task confidence needed for autonomous action: high
+- Stakes level allowed for autonomous action: low only
+- Never infer trustworthiness from demographic or protected attributes.
 
 ## Decision Log
 <!-- Automatically maintained by the agent -->

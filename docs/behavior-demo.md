@@ -26,6 +26,12 @@ The same task is shown twice: once with no DECISION.md loaded, and once with a c
 
 ## Meta-Rules
 - Confidence threshold for autonomous action: 85%
+
+## Trust Calibration Rules
+- Preference confidence needed for autonomous action: high
+- Task confidence needed for autonomous action: high
+- Stakes level allowed for autonomous action: low only
+- Never infer trustworthiness from demographic or protected attributes.
 ```
 
 ## Scenario 1: Calendar Invite During Focus Time
@@ -89,6 +95,36 @@ Behavior change:
 
 - Without the profile, the agent hedges.
 - With the profile, the agent has a clear policy: draft, do not send.
+
+## Scenario 3: High Task Confidence, Low Preference Confidence
+
+User task:
+
+> A new external partner asks to move tomorrow's intro meeting into my usual admin block. The calendar API action is easy and reversible. Should my agent reschedule it?
+
+Without DECISION.md:
+
+```text
+Agent: I can reschedule it because the requested time is open, or I can ask you first.
+```
+
+With DECISION.md:
+
+```text
+Agent: Ask first.
+
+Rules applied:
+- Task confidence is high: the calendar action is easy and reversible.
+- Preference confidence is low: there is no rule for new external partners or intro meetings.
+- Stakes are not purely internal: this affects another person and may set relationship expectations.
+
+I will ask: "Do you want new external partner meetings to be protected from automatic rescheduling, or should I treat them like normal low-stakes calendar moves?"
+```
+
+Behavior change:
+
+- Without the profile, the agent treats execution confidence as enough.
+- With the profile, the agent separates task confidence from preference confidence and asks because the user's preference is unknown.
 
 ## Minimal Eval Cases
 

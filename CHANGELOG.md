@@ -2,6 +2,7 @@
 
 ## v0.2.0 - 2026-06-09
 
+- Added research-backed Preference Evidence and Trust Calibration guidance based on recent LLM personalization and human-AI trust-calibration work.
 - Added a machine-readable DECISION.md structured profile schema.
 - Added validation guidance, a Markdown linter, and a dependency-free structured profile validator for implementers.
 - Added a concrete before/after behavior demo and minimal eval cases.

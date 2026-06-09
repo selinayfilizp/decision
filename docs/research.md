@@ -296,7 +296,54 @@ Response time during elicitation is used as a heuristic signal for decision diff
 
 ---
 
-## 7. What Makes This Novel
+## 7. Recent LLM Personalization and Trust Research (2025-2026)
+
+Recent work on LLM personalization makes DECISION.md more important, but also raises the bar for what the file should capture.
+
+### 7.1 Preference Summaries Should Be Compact, Explicit, and Portable
+
+POPI (Chen et al., 2025/2026) frames personalization as inferring compact natural-language preference summaries from heterogeneous user signals, then reusing those summaries across generators, including black-box APIs. This supports DECISION.md's choice of portable markdown, but it also implies that every generated rule should include enough provenance to remain useful outside the original chat.
+
+**Design implication:** DECISION.md should preserve the source of each important rule: whether it came from elicitation, free-text user input, a real-world override, or a manually authored principle.
+
+### 7.2 Preference Models Need Reasons, Not Just Choices
+
+PrefPalette (Li et al., 2025) argues that preference modeling should expose the attribute dimensions behind judgments rather than treating preferences as black boxes. Its results support decomposing preferences into interpretable attributes such as formality, empathy, directness, or cultural values.
+
+**Design implication:** Elicitation should capture "why this choice won" in addition to "which option won." DECISION.md rules should name the attribute or value that drove the preference, especially when the same choice could reflect multiple reasons.
+
+### 7.3 Avoid Treating All User Signals as Equally Preference-Bearing
+
+NextQuill (Zhao et al., 2025/2026) motivates causal preference modeling: not every token, response, or historical behavior reflects a durable preference. Some signals are incidental, contextual, or artifacts of the prompt.
+
+**Design implication:** DECISION.md should distinguish strong rules from weak, inferred, or context-limited rules. The format should support signal strength, contradictory evidence, and review triggers.
+
+### 7.4 A Small Number of User Responses Can Be Useful
+
+Reward factorization work (Shenfeld et al., 2025) suggests meaningful personalization can be inferred from relatively few user responses when preferences are represented in a lower-dimensional space. This supports DECISION.md's 35-question design while reinforcing the need to avoid overfitting to any single answer.
+
+**Design implication:** Prefer multiple lightweight signals per dimension over long questionnaires. Use cross-dimension tradeoffs and real-world overrides to correct early guesses.
+
+### 7.5 Trust Calibration Should Be Multidimensional
+
+Recent trust-calibration work in human/AI decision-making emphasizes that a single confidence score is often not enough in dynamic or uncertain contexts. Users need to understand confidence in the AI system, confidence in the information available, and confidence that the user's preference is known.
+
+**Design implication:** DECISION.md should separate:
+- **Preference confidence:** how sure the profile is about what the user wants.
+- **Task confidence:** how sure the agent is that it can execute correctly.
+- **Stakes level:** how costly the decision is if wrong.
+
+Autonomous action should require all three to be favorable, not just a high model confidence number.
+
+### 7.6 Monitor AI-to-Human Trust, Not Only Human-to-AI Trust
+
+Lerman and Dover (2025/2026) show that LLM-based agents may develop effective trust in humans, and that this trust can be influenced by demographic variables in some scenarios. This matters for DECISION.md because agents using the file may implicitly decide whether to believe, defer to, or challenge a user.
+
+**Design implication:** DECISION.md should never ask agents to infer trustworthiness from protected or demographic attributes. Trust-related rules should be tied to behavior, role, expertise, and explicit user authorization.
+
+---
+
+## 8. What Makes This Novel
 
 The academic literature on preference elicitation is deep, but it's almost entirely focused on:
 - Product choices (which car/phone/treatment to buy)
@@ -313,7 +360,7 @@ The academic literature on preference elicitation is deep, but it's almost entir
 
 ---
 
-## 8. Full Bibliography
+## 9. Full Bibliography
 
 ### Books
 - Christian, B. & Griffiths, T. (2016). *Algorithms to Live By*. Henry Holt.
@@ -351,6 +398,14 @@ The academic literature on preference elicitation is deep, but it's almost entir
 - Tversky, A. & Kahneman, D. (1974). "Judgment under Uncertainty: Heuristics and Biases." *Science*, 185(4157), 1124–1131.
 - Vul, E. & Pashler, H. (2008). "Measuring the Crowd Within." *Psychological Science*, 19(7), 645–647.
 - Weber, E.U., Blais, A.-R., & Betz, N. (2002). "A Domain-Specific Risk-Attitude Scale." *Journal of Behavioral Decision Making*, 15(4), 263–290.
+- Chen, Y. et al. (2025/2026). "POPI: Personalizing LLMs via Optimized Natural Language Preference Inference." arXiv:2510.17881.
+- Li, J.-N. et al. (2025). "From 1,000,000 Users to Every User: Scaling Up Personalized Preference for User-level Alignment." arXiv:2503.15463.
+- Li, S.S. et al. (2025). "PrefPalette: Personalized Preference Modeling with Latent Attributes." arXiv:2507.13541.
+- Lerman, V. & Dover, Y. (2025/2026). "A closer look at how large language models trust humans: patterns and biases." arXiv:2504.15801; *Proceedings of the Royal Society A*.
+- Marusich, L.R. et al. (2025). "Trust Calibration for Joint Human/AI Decision-Making in Dynamic and Uncertain Contexts." HCII 2025.
+- Shenfeld, I., Faltings, F., Agrawal, P., & Pacchiano, A. (2025). "Language Model Personalization via Reward Factorization." arXiv:2503.06358.
+- Xie, Z. et al. (2025). "A Survey on Personalized and Pluralistic Preference Alignment in Large Language Models." arXiv:2504.07070.
+- Zhao, X. et al. (2025/2026). "NextQuill: Causal Preference Modeling for Enhancing LLM Personalization." arXiv:2506.02368.
 
 ---
 

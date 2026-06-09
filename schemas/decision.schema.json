@@ -153,6 +153,36 @@
         }
       }
     },
+    "preferenceEvidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rule", "source", "signalStrength"],
+        "properties": {
+          "rule": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "enum": ["elicitation", "free_text", "real_world_override", "manual", "imported_history"]
+          },
+          "signalStrength": {
+            "enum": ["strong", "moderate", "limited", "conflicting", "unknown"]
+          },
+          "rationale": {
+            "type": "string"
+          },
+          "lastObserved": {
+            "type": "string",
+            "format": "date"
+          },
+          "reviewTrigger": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "antiPatterns": {
       "type": "array",
       "minItems": 1,
@@ -199,6 +229,24 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1
+        }
+      }
+    },
+    "trustCalibrationRules": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "preferenceConfidenceNeeded": {
+          "$ref": "#/$defs/confidenceLevel"
+        },
+        "taskConfidenceNeeded": {
+          "$ref": "#/$defs/confidenceLevel"
+        },
+        "stakesAllowed": {
+          "enum": ["low_only", "low_and_medium", "any_if_reversible"]
+        },
+        "prohibitedInferences": {
+          "$ref": "#/$defs/stringArray"
         }
       }
     },
@@ -251,6 +299,9 @@
         "type": "string",
         "minLength": 1
       }
+    },
+    "confidenceLevel": {
+      "enum": ["low", "medium", "high"]
     }
   }
 }

@@ -47,6 +47,14 @@ When values conflict, prioritize in this order:
 - Underconfident about: Product intuition, ability to sell, team's capacity
 - Debiasing: Always get a customer data point before committing. Never trust internal consensus without external validation.
 
+## Preference Evidence
+- Rule: Protect customer trust over speed when those values conflict
+  Source: manual
+  Signal strength: strong
+  Rationale: Trust loss compounds faster than a delayed experiment
+  Last observed: 2026-03-21
+  Review trigger: Revisit after a board-approved strategy change
+
 ## Anti-Patterns
 Things I do wrong — catch me when you see these:
 - "I try to do too many things at once" → Force me to pick the top 1-2 priorities
@@ -80,6 +88,12 @@ Areas where I genuinely don't have a stable preference — always ask me:
 - When in doubt: Ship it and learn
 - Confidence threshold for autonomous action: 75%
 - Update frequency: Monthly review, major update after each board meeting or fundraise
+
+## Trust Calibration Rules
+- Preference confidence needed for autonomous action: high
+- Task confidence needed for autonomous action: medium
+- Stakes level allowed for autonomous action: low and medium
+- Never infer trustworthiness from demographic or protected attributes.
 
 ## Decision Log
 <!-- Automatically maintained by the agent -->

@@ -247,4 +247,6 @@ These 5 questions force explicit choices between dimensions that may conflict in
 
 **The "My Own Take" option:** When users reject the binary and write their own answer, this is the richest signal. These free-text responses become custom rules that override the dimension's default logic. The user is telling you: "the real answer is more nuanced than A or B."
 
+**Rationale capture:** For high-impact, surprising, slow, or cross-dimension answers, ask one short follow-up: "What made that option win?" Store the answer as Preference Evidence. This helps distinguish durable preferences from superficial or one-off choices.
+
 **Total: 35 questions** (30 core + 5 cross-dimension) designed to map the full decision-making landscape and reveal where you're consistent, where you flex by context, and where you have genuine value conflicts.

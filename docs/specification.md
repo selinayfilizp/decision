@@ -76,6 +76,25 @@ Fallback heuristics when no specific rule applies. Must include:
 
 ## Recommended Sections
 
+### Preference Evidence
+
+Evidence and provenance for important rules. This section is strongly recommended for profiles generated through elicitation or imported behavior history. Each entry should include:
+- Rule or preference
+- Source: elicitation, free-text, real-world override, manual, or imported history
+- Signal strength: strong, moderate, limited, conflicting, or unknown
+- Rationale: the attribute or value that appears to drive the preference
+- Last observed date, when available
+- Review trigger, if the rule should be revisited after repeated overrides
+
+### Trust Calibration Rules
+
+Rules for deciding whether the agent should act, ask, or refuse based on three separate confidence dimensions:
+- **Preference confidence**: how sure the DECISION.md is about what the user wants
+- **Task confidence**: how sure the agent is that it can execute correctly
+- **Stakes level**: how costly or irreversible the decision is if wrong
+
+This section is strongly recommended for autonomous agents. A high task confidence score does not justify action when preference confidence is weak or stakes are high.
+
 ### Conflict Zones
 
 Areas where the user has no stable preference or where multiple values reliably conflict. Agents should ask before acting in these zones unless a more specific rule resolves the situation.
@@ -207,6 +226,32 @@ Approximate thresholds:
 - **"I'm torn"**: Explicit conflict → must be an escalation trigger, no default rule
 
 This approach is inspired by the Drift-Diffusion Model (Ratcliff, 1978), which demonstrates that response time and choice are jointly informative about decision difficulty. We apply this insight as a design heuristic rather than claiming formal DDM parameter recovery.
+
+### Preference Evidence and Rule Provenance
+Recent LLM personalization research suggests compact natural-language preference summaries are useful, but only when they preserve enough signal to remain meaningful outside the original interaction. DECISION.md implementations should therefore keep provenance for important rules.
+
+```markdown
+## Preference Evidence
+- Rule: Protect deep work blocks
+  Source: elicitation + repeated calendar overrides
+  Signal strength: strong
+  Rationale: attention and creative momentum beat short-term responsiveness
+  Last observed: 2026-03-21
+  Review trigger: revisit if overridden 3 times in a month
+```
+
+Agents should treat manual rules, repeated real-world overrides, and consistent multi-question patterns as stronger evidence than one-off choices. When a rule is inferred from weak or contradictory evidence, mark it as limited and ask before applying it to high-stakes decisions.
+
+### Multidimensional Trust Calibration
+The confidence threshold in `Meta-Rules` is a user preference, not a complete safety mechanism. Agent implementations should check three dimensions before acting:
+
+| Dimension | Question | Example |
+|---|---|---|
+| Preference confidence | Do we know what the user wants? | "User consistently protects focus blocks" |
+| Task confidence | Can the agent execute correctly? | "Calendar API action is simple and reversible" |
+| Stakes level | What is the cost of being wrong? | "Internal optional meeting vs. legal commitment" |
+
+If any dimension is unfavorable, ask. This prevents a common failure mode where an agent is technically confident about execution but uncertain about user preference or stakes.
 
 ### Coverage States
 Each of the 10 dimensions can be in one of these states:

@@ -23,6 +23,11 @@ A profile is ready for agent use when it has:
 - `metaRules.whenInDoubt`
 - `metaRules.updateFrequency`
 
+Recommended for stronger personalization:
+
+- `preferenceEvidence` for high-impact or inferred rules
+- `trustCalibrationRules` separating preference confidence, task confidence, and stakes level
+
 ## Markdown to Structured Fields
 
 | Markdown section | Structured field |
@@ -35,10 +40,12 @@ A profile is ready for agent use when it has:
 | `## Tradeoff Hierarchy` | `tradeoffHierarchy` |
 | `## Kill Criteria Defaults` | `killCriteriaDefaults` |
 | `## Calibration Profile` | `calibrationProfile` |
+| `## Preference Evidence` | `preferenceEvidence` |
 | `## Anti-Patterns` | `antiPatterns` |
 | `## Domain Rules` | `domainRules` |
 | `## Conflict Zones` | `conflictZones` |
 | `## Meta-Rules` | `metaRules` |
+| `## Trust Calibration Rules` | `trustCalibrationRules` |
 | `## Decision Log` | `decisionLog` |
 
 ## Recommended Failure Modes
