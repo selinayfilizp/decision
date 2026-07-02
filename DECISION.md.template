@@ -13,7 +13,7 @@ When you face a decision on my behalf:
 1. Check if an existing rule clearly applies → follow it, log it in Decision Log
 2. If no rule applies but the decision is reversible and low-stakes → use Meta-Rules defaults, log it
 3. If no rule applies and the decision is irreversible, high-stakes, or involves other people → STOP and ask me
-4. If two rules conflict → STOP and ask me, cite both rules
+4. If two rules conflict → the more specific rule wins: Escalation triggers > Conflict Zones > Domain Rules > Autonomy Rules > Meta-Rules. If they're at the same level, STOP and ask me, citing both rules
 5. If you acted and I override you → propose a new rule to prevent this next time
 
 When asking me, always present:
@@ -46,7 +46,7 @@ When I express a preference in the moment that contradicts a rule in this file:
 - Always ask if:
 - Escalation triggers:
 - Cost threshold for autonomous action: $___
-- Confidence threshold for autonomous action: ___%
+<!-- The confidence threshold lives in Meta-Rules — define it once, there. -->
 
 ## Decision Speed
 - Default mode: [Deliberate / Balanced / Bias-to-action]
@@ -108,6 +108,7 @@ Things I do wrong — catch me when you see these:
 - Update frequency: [Monthly / Quarterly / After major life changes]
 
 ## Trust Calibration Rules
+<!-- Qualitative gates per dimension. The single numeric confidence threshold lives in Meta-Rules. -->
 - Preference confidence needed for autonomous action: [high / medium / low]
 - Task confidence needed for autonomous action: [high / medium / low]
 - Stakes level allowed for autonomous action: [low only / low and medium / any if reversible]

@@ -29,6 +29,7 @@ Keep the decision logic, but anonymize the identifying context.
 - Keep examples concrete: thresholds beat adjectives.
 - If you add Markdown examples, lint them with `node scripts/lint-decision-md.mjs <file>`.
 - If you add structured data, validate it with `node scripts/validate-structured-profile.mjs <file>` and keep it aligned with [schemas/decision.schema.json](schemas/decision.schema.json).
+- Run `npm test` before opening a PR — it runs every check (all examples, the structured profile, and the README's embedded example). CI runs the same command.
 - If you change the elicitation question count, update README, specification, research docs, and system prompts together.
 
 ## Pull Request Checklist

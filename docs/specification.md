@@ -7,6 +7,15 @@ DECISION.md is a portable, human-readable markdown file that codifies a person o
 
 This repository treats the Markdown file as the canonical human-readable artifact. Tools that need deterministic validation should parse the same information into the structured profile described in [schemas/decision.schema.json](../schemas/decision.schema.json).
 
+## Versioning
+
+The format version follows semver:
+- **Major**: breaking changes — removing or renaming a required section, or changing the meaning of a required field.
+- **Minor**: additive changes — new recommended sections, new optional fields, promoted recommendations.
+- **Patch**: clarifications and fixes that don't change what a valid profile looks like.
+
+Profiles declare the format version they target in `Meta`. Tools should accept any profile with the same major version. Changes are tracked in [CHANGELOG.md](../CHANGELOG.md).
+
 ## Measuring Alignment
 
 The core success metric for a DECISION.md is **alignment rate**: the percentage of autonomous agent decisions that the user would have made themselves, measured by whether the user agrees or overrides the agent's choice.
@@ -71,6 +80,24 @@ Fallback heuristics when no specific rule applies. Must include:
 - Default action under uncertainty
 - Confidence threshold for autonomous action (0-100%)
 - Update frequency
+
+The numeric confidence threshold is defined here and only here. Other sections (Autonomy Rules, Trust Calibration Rules) reference it rather than restate it, so a profile can never contain two conflicting thresholds.
+
+---
+
+## Rule Precedence Within a File
+
+When two rules in the same DECISION.md point in different directions, agents resolve the conflict by specificity before escalating to the user:
+
+1. **Escalation triggers** (Autonomy Rules) — always win. If a trigger fires, ask, regardless of any other rule.
+2. **Conflict Zones** — if the decision falls in a declared conflict zone, ask, unless a more specific Domain Rule explicitly resolves it.
+3. **Domain Rules** — the most specific matching domain rule beats general rules.
+4. **Autonomy Rules** ("act without asking if" / "always ask if") — general operating boundaries.
+5. **Meta-Rules** — fallback heuristics, applied only when nothing above matches.
+
+If two rules at the *same* level of this hierarchy conflict, the agent must stop and ask, citing both rules. Resolving same-level conflicts is exactly the kind of judgment the user needs to make once — and then encode via the Decision Gap Protocol.
+
+This is precedence *within* one file. Precedence *across* files (product → organization → user) is defined in [The Inheritance Model](#the-inheritance-model).
 
 ---
 
@@ -212,6 +239,14 @@ When a decision gap is resolved, the new rule should be appended to the most rel
 
 Rules added via the gap protocol should be tagged so the user can review them during their regular update cadence (quarterly or after major changes).
 
+### Maintenance and Safety
+
+The gap protocol makes the DECISION.md agent-writable (with user approval). That introduces three failure modes implementations should plan for:
+
+- **Decision Log growth.** A log that grows for months bloats the agent's context on every load. Implementations should rotate or summarize: keep the last ~20 entries verbatim, collapse older history into aggregate stats ("Q2: 41 decisions, 37 agreed, 3 rules added").
+- **Rule drift.** Dozens of narrow gap-rules accumulate and can start to contradict each other. During the regular review cadence, consolidate: replace clusters of similar gap-rules with one broader rule, and delete rules that no longer reflect the user. Precedence (see [Rule Precedence Within a File](#rule-precedence-within-a-file)) limits the damage of contradictions but is no substitute for pruning.
+- **Untrusted content.** A DECISION.md is instructions to an agent, which makes it a prompt-injection surface. Agents should only append rules the user explicitly approved, never rules derived from third-party content (an email, a web page, another agent's output), and users should treat an imported DECISION.md from someone else like any untrusted configuration — read it before loading it.
+
 ---
 
 ## Signals and Confidence
@@ -328,7 +363,7 @@ A team can share a DECISION.md that defines how their agents operate in shared c
 ## Autonomy Rules
 - Act without asking if: rollback to last known good state
 - Always ask if: deploying to production during freeze window
-- Escalation: Any change affecting >1000 users
+- Escalation triggers: Any change affecting >1000 users
 
 ## Risk Profile
 - Staging: Aggressive — try things, break things
@@ -345,7 +380,7 @@ A B2B application can ship with a default DECISION.md that defines how its AI fe
 ## Autonomy Rules
 - Act without asking if: formatting, autocorrect, auto-save
 - Always ask if: sending messages, deleting data, making purchases
-- Escalation: Any action involving payments or personal data
+- Escalation triggers: Any action involving payments or personal data
 
 ## Domain Rules
 ### Customer Support Agent
@@ -378,7 +413,9 @@ When rules conflict, the higher layer wins — unless the lower layer explicitly
 
 ## Implementation as a Claude Code Skill
 
-DECISION.md maps directly to the [Claude Code Skills](https://docs.claude.com/en/skills) format. Instead of a passive file that sits in a folder, it becomes an active skill that Claude loads automatically whenever it faces a judgment call.
+DECISION.md maps directly to the [Claude Code Skills](https://docs.claude.com/en/docs/claude-code/skills) format. Instead of a passive file that sits in a folder, it becomes an active skill that Claude loads automatically whenever it faces a judgment call.
+
+> Paths, frontmatter fields, and features in this section were verified against the Claude Code documentation as of July 2026. Claude Code evolves quickly — check the linked docs if something doesn't behave as described.
 
 ### Basic Setup
 
