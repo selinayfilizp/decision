@@ -27,7 +27,7 @@ It either defaults to generic behavior, or it interrupts you for every decision.
 | Identity | Who the agent is | ✅ SOUL.md |
 | Rules | Project constraints | ✅ AGENTS.md |
 | Skills | What it can do | ✅ SKILL.md |
-| **Judgment** | **How it chooses** | **❌ Nothing — until now** |
+| **Judgment** | **How it chooses** | **❌ No shared format** |
 
 This isn't a future problem. Right now, today, your agent doesn't know whether to book the cheap flight or the direct one. Whether to send that email immediately or save it as a draft for your review. Whether 70% confidence is enough to act, or it should ask you first. A clear threshold like "act without asking if cost < $50 and reversible" would change how it operates in every session.
 
@@ -96,7 +96,7 @@ make a fast reversible mistake than deliberate endlessly.
 ## Autonomy Rules
 - Act without asking if: cost < $50, reversible, low stakes
 - Always ask if: involves other people, irreversible, cost > $500
-- Escalation: Any legal, medical, or financial commitment
+- Escalation triggers: Any legal, medical, or financial commitment
 
 ## Decision Speed
 - Default: Bias-to-action
@@ -178,11 +178,11 @@ Key principles:
 
 ## It Gets Better Over Time
 
-A DECISION.md isn't a one-time personality quiz — it's a living calibration system. Each time your agent makes a decision using your profile, you can verify whether it got it right. Over time, this feedback loop tightens:
+A DECISION.md isn't a one-time personality quiz — it's a living calibration system. Each time your agent makes a decision using your profile, you can verify whether it got it right. An illustrative trajectory (not measured data — track your own with the [alignment rate metric](docs/specification.md#measuring-alignment)):
 
-- **Week 1**: Your agent agrees with you 6/10 times. The profile is rough — mostly broad strokes.
-- **Month 1**: 8/10 after you've refined conflict zones and added domain-specific rules.
-- **Month 3**: 9/10 — it knows your anti-patterns, your thresholds shift by context, and it's learned which "I'm torn" areas to always escalate.
+- **Week 1**: Your agent agrees with you maybe 6/10 times. The profile is rough — mostly broad strokes.
+- **Month 1**: Better, after you've refined conflict zones and added domain-specific rules.
+- **Month 3**: It knows your anti-patterns, your thresholds shift by context, and it's learned which "I'm torn" areas to always escalate.
 
 The calibration profile tracks where you're overconfident and underconfident — and updates as you do. This is the compounding advantage: every decision your agent makes becomes training data for better future decisions. The profile doesn't just describe how you decide today — it evolves into the most accurate model of your judgment that exists.
 
@@ -213,7 +213,7 @@ What makes the interactive experience different from just chatting with an LLM:
 
 - **Pairwise comparison methodology** — forces real tradeoffs, not self-reported preferences. What you choose under pressure reveals more than what you say you value.
 - **3-layer questioning** — each dimension is probed three times: basic threshold → context shift → identity-level. This detects whether a preference is stable or context-dependent.
-- **Response time tracking** — silently measures how long each decision takes. Fast = strong preference. Slow = genuine conflict zone. This data shapes your profile.
+- **Response time tracking** — measures how long each decision takes, locally in your browser. Fast = strong preference. Slow = genuine conflict zone. This data shapes your profile.
 - **Five response types**: Choose A, Choose B, "I'm torn" (escalation zone), Skip, or "My own take" (free-text custom rule)
 - **Live DECISION.md generation** — your profile updates in real-time as you answer, not at the end
 
@@ -268,19 +268,7 @@ Include it as context in your agent's initialization prompt.
 
 ## Why This Works: The Research
 
-DECISION.md isn't a personality quiz. Every component is grounded in decision science research that has been validated across decades of study.
-
-**The elicitation mechanic — pairwise comparison** — comes from conjoint analysis (Luce & Tukey, 1964), the gold standard methodology in marketing, healthcare, and policy research for understanding how people actually make tradeoffs. When you're forced to choose between two options, you reveal preferences you can't articulate when asked directly. This is why we don't ask "how risk-tolerant are you on a scale of 1-10" — we present scenarios that *force* tradeoff behavior.
-
-**Response time as a heuristic signal** is inspired by the Drift-Diffusion Model (Ratcliff, 1978), which demonstrates that response time and choice are jointly informative about decision difficulty. We use response time as a practical design heuristic — fast responses likely indicate strong preferences, slow responses suggest genuine value conflicts — to enrich the profile. The questions that took you longest reveal exactly where you need explicit rules.
-
-**The "resulting" framework** — separating decision quality from outcome quality — comes directly from Annie Duke's work (*Thinking in Bets*, 2018). This is why the stress test and tracking features score process and outcome independently. A good decision can have a bad outcome due to luck.
-
-**Kill criteria and pre-commitment** draw on Duke's *Quit* (2022) and Katy Milkman's *How to Change* (2021). Setting specific, observable benchmarks *before* you're emotionally invested is one of the most effective debiasing techniques in the literature.
-
-**The calibration profile** follows Philip Tetlock's superforecasting methodology (*Superforecasting*, 2015). His Good Judgment Project demonstrated that forecasting accuracy improves by up to 60% with training — and that the core of good forecasting is knowing where you're overconfident and where you're underconfident.
-
-**Anti-patterns** map to the cognitive bias literature (Kahneman, *Thinking, Fast and Slow*, 2011; Tversky & Kahneman, 1974). Anchoring, sunk cost, confirmation bias, planning fallacy — these are predictable, documented patterns. Documenting *your* specific biases lets the agent actively counteract them.
+DECISION.md isn't a personality quiz. Every component is grounded in decision science research that has been validated across decades of study — pairwise tradeoffs force revealed preferences instead of self-reports, response time flags genuine conflict zones, and kill criteria pre-commit you before you're emotionally invested.
 
 | Component | Research Foundation |
 |-----------|-------------------|
@@ -309,6 +297,7 @@ decision/
 │   ├── startup-founder.md       ← Example: risk-tolerant founder
 │   ├── conservative-exec.md     ← Example: careful executive
 │   ├── creative-freelancer.md   ← Example: creative professional
+│   ├── developer.md             ← Example: software developer
 │   ├── new-grad.md              ← Example: early career
 │   └── structured-profile.json  ← Example structured profile
 ├── docs/
@@ -328,9 +317,11 @@ decision/
 │   └── decision.schema.json      ← Machine-readable structured profile schema
 ├── scripts/
 │   ├── lint-decision-md.mjs      ← Dependency-free Markdown profile linter
-│   └── validate-structured-profile.mjs  ← Dependency-free structured profile validator
+│   ├── validate-structured-profile.mjs  ← Dependency-free structured profile validator
+│   └── check-all.mjs             ← Runs every check (used by `npm test` and CI)
 ├── .github/
-│   └── ISSUE_TEMPLATE/          ← Issue templates for examples, integrations, and spec fixes
+│   ├── ISSUE_TEMPLATE/          ← Issue templates for examples, integrations, and spec fixes
+│   └── workflows/ci.yml         ← CI: lints examples and the README example on every PR
 ├── CODE_OF_CONDUCT.md           ← Community participation guidelines
 ├── CONTRIBUTING.md              ← How to contribute examples, docs, and integrations
 └── CHANGELOG.md                 ← Version history
@@ -340,13 +331,7 @@ decision/
 
 ## Beyond Personal: Teams, Products, and Organizations
 
-DECISION.md isn't just for individuals. Any entity that has an AI agent making decisions on its behalf needs a judgment layer.
-
-**Teams** can share a DECISION.md: an engineering team's deployment risk tolerance, a support team's refund thresholds, a marketing team's spend approval limits.
-
-**Products** can ship with a default DECISION.md that defines how their AI features behave — and let customers override it. A customer support bot's escalation rules. A scheduling assistant's booking preferences. A procurement agent's approval thresholds.
-
-**Organizations** can layer DECISION.md files: the product sets sensible defaults, the company sets compliance boundaries, and individual users customize within those boundaries. Rules inherit downward; the higher layer wins on conflicts.
+DECISION.md isn't just for individuals. Teams can share one (deployment risk tolerance, refund thresholds, spend limits), products can ship one as the default behavior for their AI features, and organizations can layer them — rules inherit downward, and the higher layer wins on conflicts:
 
 ```
 Product DECISION.md  → Default behavior for all users
@@ -355,8 +340,6 @@ Org DECISION.md      → Company compliance, risk tolerance, approval limits
   ↓ overridden by
 User DECISION.md     → Individual preferences (where org permits)
 ```
-
-This means every B2B application with AI features could benefit from a DECISION.md — not as a nice-to-have, but as the configuration layer that determines how the AI actually behaves for each customer.
 
 Full specification for organizational DECISION.md: [docs/specification.md](docs/specification.md)
 

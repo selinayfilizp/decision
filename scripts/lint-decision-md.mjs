@@ -12,6 +12,16 @@ const text = fs.readFileSync(file, "utf8");
 const errors = [];
 const warnings = [];
 
+const placeholderMarkers = [/___/, /YYYY-MM-DD/, /\[Your Name\]/i];
+if (placeholderMarkers.some((marker) => marker.test(text))) {
+  console.error(`Lint results for ${file}`);
+  console.error(
+    "ERROR: This looks like an unfilled template — it still contains placeholders " +
+      "(___ / YYYY-MM-DD / [Your Name]). Fill in the blanks, then lint again."
+  );
+  process.exit(1);
+}
+
 const requiredSections = [
   "Meta",
   "Decision Identity",
@@ -97,7 +107,10 @@ for (const line of allThresholdLines) {
   if (/confidence threshold/i.test(line) && !/\d+(\.\d+)?\s*%/.test(line)) {
     errors.push(`Confidence threshold must be a numeric percentage: ${line}`);
   }
-  if (/cost threshold/i.test(line) && !/(\$|USD|dollars?)?\s*\d+([,.]\d+)?\s*(k|K)?/.test(line)) {
+  if (
+    /cost threshold/i.test(line) &&
+    !/[$€£]\s*\d+([,.]\d+)?\s*[kK]?\b|\b\d+([,.]\d+)?\s*(k\b|K\b|USD|EUR|GBP|dollars?)/.test(line)
+  ) {
     errors.push(`Cost threshold must include a numeric amount: ${line}`);
   }
 }
