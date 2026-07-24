@@ -406,7 +406,3 @@ The academic literature on preference elicitation is deep, but it's almost entir
 - Shenfeld, I., Faltings, F., Agrawal, P., & Pacchiano, A. (2025). "Language Model Personalization via Reward Factorization." arXiv:2503.06358.
 - Xie, Z. et al. (2025). "A Survey on Personalized and Pluralistic Preference Alignment in Large Language Models." arXiv:2504.07070.
 - Zhao, X. et al. (2025/2026). "NextQuill: Causal Preference Modeling for Enhancing LLM Personalization." arXiv:2506.02368.
-
----
-
-*This document should be cited in the hackathon presentation and serve as the foundation for all design decisions in DecisionOS.*

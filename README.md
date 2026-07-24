@@ -50,8 +50,6 @@ Anthropic's model specification defines Claude's universal values, safety princi
 
 The soul document gave agents a conscience. SOUL.md gave them personality. **DECISION.md gives them judgment.**
 
-Read the full analysis: [docs/soul-document-positioning.md](docs/soul-document-positioning.md)
-
 ---
 
 ## What is DECISION.md?
@@ -302,7 +300,6 @@ decision/
 │   └── structured-profile.json  ← Example structured profile
 ├── docs/
 │   ├── research.md              ← Full research framework with citations
-│   ├── soul-document-positioning.md  ← Why DECISION.md completes the stack
 │   ├── specification.md         ← The DECISION.md format specification
 │   ├── integration-guide.md     ← How to use with different platforms
 │   ├── behavior-demo.md         ← Before/after agent behavior demo
