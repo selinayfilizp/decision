@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://decisionos.app/schemas/decision.schema.json",
+  "$id": "https://raw.githubusercontent.com/selinayfilizp/decision/main/schemas/decision.schema.json",
   "title": "DECISION.md Structured Profile",
   "description": "A machine-readable representation of a DECISION.md profile.",
   "type": "object",

@@ -207,7 +207,7 @@ Full protocol specification: [docs/specification.md](docs/specification.md)
 
 ### Option 1: Interactive Experience (Recommended)
 
-Visit **[decisionos.app](https://decisionos.app)** — 35 research-backed tradeoff scenarios across 10 decision dimensions: 30 core questions plus 5 cross-dimension tradeoff questions. No account, no API key, nothing to install.
+Visit **[decisionsmd.vercel.app](https://decisionsmd.vercel.app)** — 35 research-backed tradeoff scenarios across 10 decision dimensions: 30 core questions plus 5 cross-dimension tradeoff questions. No account, no API key, nothing to install.
 
 What makes the interactive experience different from just chatting with an LLM:
 

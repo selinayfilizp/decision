@@ -151,13 +151,13 @@ The soul document itself validates our approach. It says Claude should have "cal
 
 ---
 
-## The Pitch (30 Seconds)
+## The Short Version
 
-*"In December 2025, researchers extracted Claude's soul document — the internal configuration that defines who Claude is. It covers identity, values, honesty, safety — everything about the agent's character. But read it carefully and you'll find a gap: it says 'use good judgment' over and over, but never defines what good judgment looks like for you.*
+In December 2025, researchers extracted Claude's soul document: the internal configuration that defines who Claude is. It covers identity, values, honesty, and safety. Read it carefully, though, and there is a gap. It says "use good judgment" over and over, but it never defines what good judgment looks like for a specific person.
 
-*SOUL.md tells your agent who it is. SKILL.md tells it what it can do. DECISION.md — what we built — tells it how to choose. It's the missing layer in the agent stack: your personal decision-making philosophy, elicited through research-backed methodology, exported as a portable file that works with Claude, OpenClaw, Cursor, or any agent platform.*
+SOUL.md tells an agent who it is. SKILL.md tells it what it can do. DECISION.md tells it how to choose. It is the missing layer in the agent stack: a personal decision-making philosophy, elicited with research-backed methodology and exported as a portable file that works with Claude, OpenClaw, Cursor, or any other agent platform.
 
-*Teach your AI agent how you think — so it can decide like you."*
+Teach your agent how you think, so it can decide like you.
 
 ---
 
