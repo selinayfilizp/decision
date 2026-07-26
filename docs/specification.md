@@ -1,17 +1,17 @@
 # DECISION.md Format Specification
 
-Version: 0.2.0
+Version: 0.3.0
 
 ## Overview
-DECISION.md is a portable, human-readable markdown file that codifies a person or organization's decision-making philosophy for use by AI agents. It is designed as a living document — seeded through structured elicitation and refined continuously through real-world decision gaps.
+DECISION.md is a portable, human-readable markdown file that codifies a person or organization's decision-making philosophy for use by AI agents. It is designed as a living document, seeded through structured elicitation and refined continuously through real-world decision gaps.
 
 This repository treats the Markdown file as the canonical human-readable artifact. Tools that need deterministic validation should parse the same information into the structured profile described in [schemas/decision.schema.json](../schemas/decision.schema.json).
 
 ## Versioning
 
 The format version follows semver:
-- **Major**: breaking changes — removing or renaming a required section, or changing the meaning of a required field.
-- **Minor**: additive changes — new recommended sections, new optional fields, promoted recommendations.
+- **Major**: breaking changes: removing or renaming a required section, or changing the meaning of a required field.
+- **Minor**: additive changes: new recommended sections, new optional fields, promoted recommendations.
 - **Patch**: clarifications and fixes that don't change what a valid profile looks like.
 
 Profiles declare the format version they target in `Meta`. Tools should accept any profile with the same major version. Changes are tracked in [CHANGELOG.md](../CHANGELOG.md).
@@ -89,13 +89,13 @@ The numeric confidence threshold is defined here and only here. Other sections (
 
 When two rules in the same DECISION.md point in different directions, agents resolve the conflict by specificity before escalating to the user:
 
-1. **Escalation triggers** (Autonomy Rules) — always win. If a trigger fires, ask, regardless of any other rule.
-2. **Conflict Zones** — if the decision falls in a declared conflict zone, ask, unless a more specific Domain Rule explicitly resolves it.
-3. **Domain Rules** — the most specific matching domain rule beats general rules.
-4. **Autonomy Rules** ("act without asking if" / "always ask if") — general operating boundaries.
-5. **Meta-Rules** — fallback heuristics, applied only when nothing above matches.
+1. **Escalation triggers** (Autonomy Rules): always win. If a trigger fires, ask, regardless of any other rule.
+2. **Conflict Zones**: if the decision falls in a declared conflict zone, ask, unless a more specific Domain Rule explicitly resolves it.
+3. **Domain Rules**: the most specific matching domain rule beats general rules.
+4. **Autonomy Rules** ("act without asking if" / "always ask if"): general operating boundaries.
+5. **Meta-Rules**: fallback heuristics, applied only when nothing above matches.
 
-If two rules at the *same* level of this hierarchy conflict, the agent must stop and ask, citing both rules. Resolving same-level conflicts is exactly the kind of judgment the user needs to make once — and then encode via the Decision Gap Protocol.
+If two rules at the *same* level of this hierarchy conflict, the agent must stop and ask, citing both rules. Resolving same-level conflicts is exactly the kind of judgment the user needs to make once, and then encode via the Decision Gap Protocol.
 
 This is precedence *within* one file. Precedence *across* files (product → organization → user) is defined in [The Inheritance Model](#the-inheritance-model).
 
@@ -144,7 +144,7 @@ A running log of decisions the agent made using this profile and whether the use
 
 ### The Problem It Solves
 
-No DECISION.md can anticipate every decision an agent will face. A profile built from 35 elicitation questions covers the major dimensions and cross-dimension tradeoffs, but real life generates edge cases constantly: the cucumbers aren't fresh — buy them anyway? A meeting got canceled — use the free hour for deep work or clear the email backlog? A vendor is 10% over budget but significantly better — approve the overage?
+No DECISION.md can anticipate every decision an agent will face. A profile built from 35 elicitation questions covers the major dimensions and cross-dimension tradeoffs, but real life generates edge cases constantly: the cucumbers aren't fresh. Buy them anyway? A meeting got canceled. Use the free hour for deep work or clear the email backlog? A vendor is 10% over budget but significantly better. Approve the overage?
 
 When an agent hits a decision that isn't covered by the existing DECISION.md, it currently has two bad options: guess (and risk getting it wrong) or interrupt the user with no structure (and waste their time). The Decision Gap Protocol gives it a third, better option.
 
@@ -152,17 +152,17 @@ When an agent hits a decision that isn't covered by the existing DECISION.md, it
 
 When the agent encounters a tradeoff with no applicable rule in the DECISION.md:
 
-**Step 1 — Detect the gap.** The agent recognizes that none of its existing rules clearly apply to this decision. It identifies which dimension(s) are relevant and what the core tradeoff is.
+**Step 1: Detect the gap.** The agent recognizes that none of its existing rules clearly apply to this decision. It identifies which dimension(s) are relevant and what the core tradeoff is.
 
-**Step 2 — Flag it with structure.** Instead of a vague "what should I do?", the agent presents:
+**Step 2: Flag it with structure.** Instead of a vague "what should I do?", the agent presents:
 - The specific tradeoff it's facing
 - Which DECISION.md dimension it falls under
 - Why the existing rules don't cover it
 - Two or more concrete options
 
-**Step 3 — Capture the decision as a rule.** After the user decides, the agent doesn't just act — it proposes a generalizable rule: "Based on your choice, should I add this rule to your DECISION.md?"
+**Step 3: Capture the decision as a rule.** After the user decides, the agent doesn't just act: it proposes a generalizable rule: "Based on your choice, should I add this rule to your DECISION.md?"
 
-**Step 4 — Suggest the update.** The agent drafts a specific addition to the appropriate section of the DECISION.md, ready for the user to approve or edit.
+**Step 4: Suggest the update.** The agent drafts a specific addition to the appropriate section of the DECISION.md, ready for the user to approve or edit.
 
 ### Example
 
@@ -180,7 +180,7 @@ Agent: I found organic cucumbers at $4.50 but they're not very fresh.
        [B] Buy the regular (fresh > organic based on your "health: conservative" rule)
        [C] Skip cucumbers entirely (you could substitute)
 
-User: B — freshness matters more than organic for produce.
+User: B (freshness matters more than organic for produce).
 
 Agent: Got it. Suggested DECISION.md update:
 
@@ -197,12 +197,12 @@ Agent: Got it. Suggested DECISION.md update:
 This protocol transforms DECISION.md from a static document into a feedback loop:
 
 1. **Initial elicitation** seeds the profile with 10 dimensions from 35 structured questions
-2. **Real-world usage** surfaces the gaps — decisions the initial elicitation couldn't anticipate
+2. **Real-world usage** surfaces the gaps: decisions the initial elicitation couldn't anticipate
 3. **Gap detection** turns each gap into a structured learning opportunity
 4. **Rule capture** ensures the same type of decision is never a gap again
-5. **Calibration** tracks agreement rates — if the agent keeps getting overridden, the profile needs refinement
+5. **Calibration** tracks agreement rates: if the agent keeps getting overridden, the profile needs refinement
 
-Over time, the DECISION.md converges on a comprehensive model of how you actually decide — not just how you think you decide (stated preferences), but how you respond under real-world constraints (revealed preferences). The gap protocol is what makes this a living system rather than a one-time quiz.
+Over time, the DECISION.md converges on a comprehensive model of how you actually decide, not just how you think you decide (stated preferences), but how you respond under real-world constraints (revealed preferences). The gap protocol is what makes this a living system rather than a one-time quiz.
 
 ### Implementation Guidance for Agent Developers
 
@@ -234,7 +234,7 @@ does this fall under and what is the core tradeoff?
 When a decision gap is resolved, the new rule should be appended to the most relevant section. If no section fits, it goes under Domain Rules with a new sub-heading. The format should match the existing style:
 
 ```markdown
-- **RULE:** [specific, threshold-based rule] — added via gap protocol [date]
+- **RULE:** [specific, threshold-based rule] (added via gap protocol [date])
 ```
 
 Rules added via the gap protocol should be tagged so the user can review them during their regular update cadence (quarterly or after major changes).
@@ -245,14 +245,14 @@ The gap protocol makes the DECISION.md agent-writable (with user approval). That
 
 - **Decision Log growth.** A log that grows for months bloats the agent's context on every load. Implementations should rotate or summarize: keep the last ~20 entries verbatim, collapse older history into aggregate stats ("Q2: 41 decisions, 37 agreed, 3 rules added").
 - **Rule drift.** Dozens of narrow gap-rules accumulate and can start to contradict each other. During the regular review cadence, consolidate: replace clusters of similar gap-rules with one broader rule, and delete rules that no longer reflect the user. Precedence (see [Rule Precedence Within a File](#rule-precedence-within-a-file)) limits the damage of contradictions but is no substitute for pruning.
-- **Untrusted content.** A DECISION.md is instructions to an agent, which makes it a prompt-injection surface. Agents should only append rules the user explicitly approved, never rules derived from third-party content (an email, a web page, another agent's output), and users should treat an imported DECISION.md from someone else like any untrusted configuration — read it before loading it.
+- **Untrusted content.** A DECISION.md is instructions to an agent, which makes it a prompt-injection surface. Agents should only append rules the user explicitly approved, never rules derived from third-party content (an email, a web page, another agent's output), and users should treat an imported DECISION.md from someone else like any untrusted configuration: read it before loading it.
 
 ---
 
 ## Signals and Confidence
 
 ### Response Time as a Heuristic Signal
-During elicitation, response time is used as a practical heuristic for decision difficulty — not as a formal cognitive measurement. It correlates with preference strength in practice, though individual variation (reading speed, device, distraction) means it should be weighted as one signal among many, not treated as ground truth.
+During elicitation, response time is used as a practical heuristic for decision difficulty, not as a formal cognitive measurement. It correlates with preference strength in practice, though individual variation (reading speed, device, distraction) means it should be weighted as one signal among many, not treated as ground truth.
 
 Approximate thresholds:
 - **< 3 seconds**: Likely a strong, instinctive preference → high-confidence rule
@@ -291,10 +291,10 @@ If any dimension is unfavorable, ask. This prevents a common failure mode where 
 ### Coverage States
 Each of the 10 dimensions can be in one of these states:
 - **Strong**: Consistent responses across multiple scenarios (same direction 75%+)
-- **Mixed**: Responses varied by context — agent should check context before applying
-- **Torn**: User explicitly flagged conflict — always escalate to human
-- **Partial**: Only free-text data — custom rules exist but may not cover all cases
-- **Skipped**: User declined to answer — no data, use meta-rules as fallback
+- **Mixed**: Responses varied by context. Agent should check context before applying
+- **Torn**: User explicitly flagged conflict. Always escalate to human
+- **Partial**: Only free-text data. Custom rules exist but may not cover all cases
+- **Skipped**: User declined to answer. No data, use meta-rules as fallback
 - **Unexplored**: No questions answered for this dimension yet
 
 ### Context Sensitivity Detection
@@ -317,13 +317,13 @@ People may answer elicitation questions based on how they *want* to be seen rath
 
 Mitigations built into the design:
 - **Pairwise tradeoffs** (not self-report scales) force revealed preferences rather than stated ones
-- **3-layer questioning** tests whether answers hold across contexts — inconsistency signals the real preference
+- **3-layer questioning** tests whether answers hold across contexts: inconsistency signals the real preference
 - **"My Own Take" free-text** lets users reject both options without social pressure to pick one
 - **Response time** helps flag fast "socially correct" answers vs. slower genuine deliberation
 - **The Decision Gap Protocol** captures *actual* decisions in real situations, which gradually corrects any self-report bias in the initial elicitation
 
 ### Algorithm Aversion Risk
-Research shows that when an automated system makes a mistake, people may trust it *less* than if there was no system at all — even if the system is right 90% of the time (Burton et al., 2020). A DECISION.md that leads to a clearly wrong agent decision could reduce the user's willingness to use it.
+Research shows that when an automated system makes a mistake, people may trust it *less* than if there was no system at all, even if the system is right 90% of the time (Burton et al., 2020). A DECISION.md that leads to a clearly wrong agent decision could reduce the user's willingness to use it.
 
 Mitigation: the specification requires escalation triggers and "always ask" rules specifically to ensure the agent fails safely in high-stakes domains. The Decision Log tracks overrides so users can see the accuracy rate and calibrate their trust appropriately.
 
@@ -358,7 +358,7 @@ While DECISION.md was designed for individuals, the format applies equally to or
 A team can share a DECISION.md that defines how their agents operate in shared contexts: engineering team risk tolerance for deployments, customer support escalation thresholds, marketing spend approval limits.
 
 ```markdown
-# DECISION.md — Engineering Team
+# DECISION.md: Engineering Team
 
 ## Autonomy Rules
 - Act without asking if: rollback to last known good state
@@ -366,16 +366,16 @@ A team can share a DECISION.md that defines how their agents operate in shared c
 - Escalation triggers: Any change affecting >1000 users
 
 ## Risk Profile
-- Staging: Aggressive — try things, break things
-- Production: Conservative — zero tolerance for data loss
-- Security: Ultra-conservative — escalate everything
+- Staging: Aggressive (try things, break things)
+- Production: Conservative (zero tolerance for data loss)
+- Security: Ultra-conservative (escalate everything)
 ```
 
 ### Product DECISION.md
-A B2B application can ship with a default DECISION.md that defines how its AI features make decisions on behalf of users — and allow customers to customize it.
+A B2B application can ship with a default DECISION.md that defines how its AI features make decisions on behalf of users, and allow customers to customize it.
 
 ```markdown
-# DECISION.md — [Product Name] Default
+# DECISION.md: [Product Name] Default
 
 ## Autonomy Rules
 - Act without asking if: formatting, autocorrect, auto-save
@@ -407,7 +407,7 @@ Layer 3: Individual DECISION.md (created by the user)
   → Controlled by: Individual user
 ```
 
-When rules conflict, the higher layer wins — unless the lower layer explicitly allows overrides. This mirrors how permission systems work: the org can set a floor ("never auto-approve spend > $500") while individuals customize within that boundary.
+When rules conflict, the higher layer wins, unless the lower layer explicitly allows overrides. This mirrors how permission systems work: the org can set a floor ("never auto-approve spend > $500") while individuals customize within that boundary.
 
 ---
 
@@ -415,7 +415,7 @@ When rules conflict, the higher layer wins — unless the lower layer explicitly
 
 DECISION.md maps directly to the [Claude Code Skills](https://docs.claude.com/en/docs/claude-code/skills) format. Instead of a passive file that sits in a folder, it becomes an active skill that Claude loads automatically whenever it faces a judgment call.
 
-> Paths, frontmatter fields, and features in this section were verified against the Claude Code documentation as of July 2026. Claude Code evolves quickly — check the linked docs if something doesn't behave as described.
+> Paths, frontmatter fields, and features in this section were verified against the Claude Code documentation as of July 2026. Claude Code evolves quickly. Check the linked docs if something doesn't behave as described.
 
 ### Basic Setup
 
@@ -438,7 +438,7 @@ description: >
 user-invocable: false
 ---
 
-# DECISION.md — [Your Name]
+# DECISION.md: [Your Name]
 
 ## How to Use This File (Agent Instructions)
 When you face a decision on my behalf:
@@ -453,8 +453,8 @@ When you face a decision on my behalf:
 
 Key frontmatter choices:
 
-- **`user-invocable: false`** — You never type `/decision`. Claude loads it automatically when it detects a decision situation based on the description. This is background knowledge, not an action.
-- **`description`** — This is how Claude decides when to load the skill. Be specific about the situations where your framework applies. The description is always in Claude's context; the full content only loads when triggered.
+- **`user-invocable: false`**: You never type `/decision`. Claude loads it automatically when it detects a decision situation based on the description. This is background knowledge, not an action.
+- **`description`**: This is how Claude decides when to load the skill. Be specific about the situations where your framework applies. The description is always in Claude's context; the full content only loads when triggered.
 
 ### With Supporting Files
 
@@ -477,7 +477,7 @@ Reference them from your SKILL.md so Claude knows when to load each one:
 - For my calibration profile over time, see [calibration.md](calibration.md)
 ```
 
-Claude loads the main SKILL.md when triggered and pulls in supporting files only when they're relevant — keeping context efficient.
+Claude loads the main SKILL.md when triggered and pulls in supporting files only when they're relevant, keeping context efficient.
 
 ### With Dynamic Context Injection
 
@@ -494,7 +494,7 @@ Claude Code skills support `` !`command` `` syntax that runs shell commands befo
 !`grep "accuracy" ~/.claude/skills/decision/calibration.md | tail -1`
 ```
 
-Every time the skill loads, Claude sees your latest decision log, any pending gaps, and your current accuracy rate — not stale data from when you first wrote the file.
+Every time the skill loads, Claude sees your latest decision log, any pending gaps, and your current accuracy rate, not stale data from when you first wrote the file.
 
 ### Where to Place It
 
@@ -506,7 +506,7 @@ Claude Code skills follow a priority hierarchy. DECISION.md maps naturally to ea
 | Project | `.claude/skills/decision/SKILL.md` | Project-specific decision rules (e.g., deployment risk tolerance) |
 | Enterprise | Managed settings | Organization-wide decision policies |
 
-Personal skills apply everywhere. Project skills add or override rules for specific contexts. Enterprise skills set floors that individual users can't override — like "never auto-approve spend > $500" or "always escalate security decisions."
+Personal skills apply everywhere. Project skills add or override rules for specific contexts. Enterprise skills set floors that individual users can't override, like "never auto-approve spend > $500" or "always escalate security decisions."
 
 This maps directly to the [Inheritance Model](#the-inheritance-model): Enterprise > Personal > Project mirrors Product > Organization > Individual.
 
@@ -557,15 +557,15 @@ Claude: I need to decide whether to accept a meeting invite during your
         Dimension: autonomy + domain
         Existing rules:
           - "Protect deep work blocks" (Domain Rules → Work)
-          - "Accept recurring 1-on-1s" (not in your rules — inferred)
+          - "Accept recurring 1-on-1s" (not in your rules, inferred)
         Gap: No rule for meetings with your manager during focus time
 
         Options:
-        [A] Accept — manager meetings may be higher priority than focus blocks
+        [A] Accept (manager meetings may be higher priority than focus blocks)
         [B] Decline with suggested alternative time
         [C] Accept but ask to reschedule to end of focus block
 
-You:    B — always suggest an alternative, never just decline
+You:    B (always suggest an alternative, never just decline)
 
 Claude: Got it. Suggested addition to your DECISION.md:
 
@@ -590,4 +590,4 @@ DECISION.md works alongside other Claude Code skills without conflict. When Clau
 └── api-patterns/SKILL.md   ← HOW to build (coding conventions)
 ```
 
-When Claude runs a deploy skill, it also has your DECISION.md loaded — so it knows whether to proceed with a risky deployment or ask you first. The judgment layer enriches every other skill.
+When Claude runs a deploy skill, it also has your DECISION.md loaded, so it knows whether to proceed with a risky deployment or ask you first. The judgment layer enriches every other skill.

@@ -1,4 +1,4 @@
-# DECISION.md — Jordan's Decision Framework
+# DECISION.md: Jordan's Decision Framework
 ## VP Operations, Fortune 500
 
 ## Meta
@@ -11,10 +11,10 @@ Measured, data-driven leader who values thoroughness and stakeholder alignment. 
 
 ## Risk Profile
 - Overall: Conservative
-- Career: Moderate — will take calculated risks with clear upside, but never jeopardize reputation
-- Financial: Ultra-conservative — index funds, diversified, no speculative positions
-- Health: Conservative — follows medical advice, preventive care, no shortcuts
-- Organizational: Moderate — willing to restructure if data supports it, but never hastily
+- Career: Moderate (will take calculated risks with clear upside, but never jeopardize reputation)
+- Financial: Ultra-conservative (index funds, diversified, no speculative positions)
+- Health: Conservative (follows medical advice, preventive care, no shortcuts)
+- Organizational: Moderate (willing to restructure if data supports it, but never hastily)
 
 ## Autonomy Rules
 - Act without asking if: within my existing budget authority, standard operating procedure, reversible
@@ -55,7 +55,7 @@ When values conflict, prioritize in this order:
   Review trigger: Revisit if repeated urgent decisions make the written process too slow
 
 ## Anti-Patterns
-Things I do wrong — catch me when you see these:
+Things I do wrong. Catch me when you see these:
 - "I over-consult and delay decisions" → Set a hard deadline before starting the consultation process
 - "I avoid conflict by creating committees" → Ask "can one person own this decision?"
 - "I request more data when I'm actually just anxious" → Name the anxiety, then decide with what I have
@@ -68,9 +68,9 @@ Things I do wrong — catch me when you see these:
 - Default to process improvement before headcount increase
 
 ### Personal
-- Separate work identity from personal identity — don't let career setbacks feel personal
-- Invest in relationships outside of work — they provide perspective
-- Take all vacation days — burnout is a decision quality killer
+- Separate work identity from personal identity: don't let career setbacks feel personal
+- Invest in relationships outside of work (they provide perspective)
+- Take all vacation days: burnout is a decision quality killer
 
 ### Financial
 - Never invest in anything I can't explain in one sentence
@@ -78,7 +78,7 @@ Things I do wrong — catch me when you see these:
 - Emergency fund: 6 months expenses, non-negotiable
 
 ## Conflict Zones
-Areas where I genuinely don't have a stable preference — always ask me:
+Areas where I genuinely don't have a stable preference. Always ask me:
 - When speed and stakeholder alignment conflict on decisions with visible organizational impact
 - When a reversible operational change could still create precedent across teams
 

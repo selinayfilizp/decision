@@ -28,8 +28,8 @@ Return a JSON object:
 
 ## Rules
 - Make scenarios realistic and emotionally engaging, not abstract
-- Test edge cases — scenarios where multiple rules conflict
+- Test edge cases: scenarios where multiple rules conflict
 - Include at least one scenario that tests a documented anti-pattern
 - Include at least one scenario in an area marked "[needs more data]"
-- Show your work — cite specific sections of the DECISION.md
-- Be honest about confidence — if the DECISION.md doesn't clearly resolve the scenario, say so
+- Show your work: cite specific sections of the DECISION.md
+- Be honest about confidence: if the DECISION.md doesn't clearly resolve the scenario, say so

@@ -1,4 +1,4 @@
-# DECISION.md — Alex's Decision Framework
+# DECISION.md: Alex's Decision Framework
 ## Startup Founder, Series A SaaS
 
 ## Meta
@@ -7,15 +7,15 @@
 - Source: Example
 
 ## Decision Identity
-Bias-to-action builder who treats most decisions as reversible experiments. Comfortable with high ambiguity and calculated risk in business, moderate in personal life. Would rather ship something imperfect today than perfect it next month. Believes speed is a competitive advantage and that most mistakes can be fixed — but knows the exceptions and treats them differently.
+Bias-to-action builder who treats most decisions as reversible experiments. Comfortable with high ambiguity and calculated risk in business, moderate in personal life. Would rather ship something imperfect today than perfect it next month. Believes speed is a competitive advantage and that most mistakes can be fixed, but knows the exceptions and treats them differently.
 
 ## Risk Profile
 - Overall: Aggressive
-- Career/Business: Very Aggressive — willing to bet the company on a strong thesis
-- Financial (personal): Moderate — keeps 12 months runway in savings, aggressive with company capital
-- Health: Conservative — prioritizes sleep and exercise as non-negotiable
-- Creative/Product: Aggressive — ship weird things, kill them fast if they don't work
-- Hiring: Moderate-Aggressive — will take a chance on raw talent over proven experience
+- Career/Business: Very Aggressive (willing to bet the company on a strong thesis)
+- Financial (personal): Moderate (keeps 12 months runway in savings, aggressive with company capital)
+- Health: Conservative (prioritizes sleep and exercise as non-negotiable)
+- Creative/Product: Aggressive (ship weird things, kill them fast if they don't work)
+- Hiring: Moderate-Aggressive (will take a chance on raw talent over proven experience)
 
 ## Autonomy Rules
 - Act without asking if: cost < $500, reversible within a week, doesn't affect customers
@@ -56,7 +56,7 @@ When values conflict, prioritize in this order:
   Review trigger: Revisit after a board-approved strategy change
 
 ## Anti-Patterns
-Things I do wrong — catch me when you see these:
+Things I do wrong. Catch me when you see these:
 - "I try to do too many things at once" → Force me to pick the top 1-2 priorities
 - "I underestimate how long things take" → Double my time estimates automatically
 - "I avoid firing underperformers" → Flag when someone has missed targets 2 months in a row
@@ -71,7 +71,7 @@ Things I do wrong — catch me when you see these:
 
 ### Personal
 - Protect weekends. No work decisions after 6pm Friday unless truly urgent.
-- Prioritize relationships — they compound more than any business metric
+- Prioritize relationships (they compound more than any business metric)
 - Exercise is non-negotiable, not a nice-to-have
 
 ### Financial
@@ -80,7 +80,7 @@ Things I do wrong — catch me when you see these:
 - Review burn rate weekly, not monthly
 
 ## Conflict Zones
-Areas where I genuinely don't have a stable preference — always ask me:
+Areas where I genuinely don't have a stable preference. Always ask me:
 - When speed could improve growth but create customer trust risk
 - When a decision touches investors, board communication, or key hires
 

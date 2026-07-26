@@ -16,7 +16,7 @@ const placeholderMarkers = [/___/, /YYYY-MM-DD/, /\[Your Name\]/i];
 if (placeholderMarkers.some((marker) => marker.test(text))) {
   console.error(`Lint results for ${file}`);
   console.error(
-    "ERROR: This looks like an unfilled template — it still contains placeholders " +
+    "ERROR: This looks like an unfilled template. It still contains placeholders " +
       "(___ / YYYY-MM-DD / [Your Name]). Fill in the blanks, then lint again."
   );
   process.exit(1);
@@ -85,7 +85,9 @@ if (!riskLines.some((line) => /^- Overall:/.test(line))) {
 }
 
 for (const line of riskLines) {
-  const [, label, rawLevel = ""] = line.match(/^- ([^:]+):\s*(.+?)(?:\s+—|$)/) ?? [];
+  // Accepted line shapes: "- Label: Level", "- Label: Level (rationale)",
+  // and the legacy em-dash separator form (kept for profiles in the wild).
+  const [, label, rawLevel = ""] = line.match(/^- ([^:]+):\s*(.+?)(?:\s+—|\s*\(|$)/) ?? [];
   const level = rawLevel.trim();
   if (level && !riskLevels.has(level)) {
     errors.push(`Risk Profile "${label}" uses non-canonical risk level "${level}"`);
