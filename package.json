@@ -1,13 +1,14 @@
 {
   "name": "decision-md",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "The open DECISION.md format: templates, examples, and validation tooling",
   "private": true,
   "type": "module",
   "scripts": {
     "test": "node scripts/check-all.mjs",
     "lint": "node scripts/lint-decision-md.mjs",
-    "validate": "node scripts/validate-structured-profile.mjs"
+    "validate": "node scripts/validate-structured-profile.mjs",
+    "evals": "node scripts/run-evals.mjs"
   },
   "engines": {
     "node": ">=18"
